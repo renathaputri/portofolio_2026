@@ -88,7 +88,7 @@ export function Navbar() {
                             )}
                             <span className="font-bold text-base tracking-tight">
                                 <span className="text-gray-900 dark:text-white">{firstWords} </span>
-                                <span className="gradient-text">{lastWord}</span>
+                                <span className="text-purple-700 dark:text-purple-400">{lastWord}</span>
                             </span>
                         </Link>
 
