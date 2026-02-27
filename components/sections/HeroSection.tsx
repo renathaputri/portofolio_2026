@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiMessageCircle, FiDownload } from "react-icons/fi";
 import {

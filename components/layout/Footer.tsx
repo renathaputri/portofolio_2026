@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { personalData } from "@/lib/data/personal";
 
