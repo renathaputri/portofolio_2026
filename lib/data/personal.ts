@@ -32,7 +32,7 @@ export const personalData = {
     ],
     certifications: [
         {
-            title: "MCertificate of Competence - Junior Programmer",
+            title: "Certificate of Competence - Junior Programmer",
             issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
             credentialUrl: "https://media.licdn.com/dms/image/v2/D4D2DAQFJ-Ydcd5R93g/profile-treasury-image-shrink_1280_1280/B4DZkFCSofG8AY-/0/1756726112454?e=1772726400&v=beta&t=TXBLGAzd3FGR0kk7AjWWk-8pKogQnPi3GgWyWMzplZk",
         },
