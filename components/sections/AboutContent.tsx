@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiExternalLink, FiLinkedin } from "react-icons/fi";
 import { personalData } from "@/lib/data/personal";
+import { TechStackSection } from "@/components/sections/TechStackSection";
 
 export function AboutContent() {
     return (
@@ -15,7 +16,7 @@ export function AboutContent() {
                     transition={{ duration: 0.5 }}
                     className="mb-16"
                 >
-                    <p className="text-xs font-semibold tracking-widest uppercase text-purple-700 dark:text-purple-400 mb-3">
+                    <p className="text-xs font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-3">
                         Who I Am
                     </p>
                     <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">
@@ -61,7 +62,7 @@ export function AboutContent() {
                             >
                                 {/* Left: dot + line only */}
                                 <div className="flex flex-col items-center w-4 shrink-0">
-                                    <div className="mt-2 w-3 h-3 rounded-full bg-purple-700 ring-4 ring-purple-700/20 shrink-0" />
+                                    <div className="mt-2 w-3 h-3 rounded-full bg-brand-500 ring-4 ring-brand-500/20 shrink-0" />
                                     {i < personalData.education.length - 1 && (
                                         <div className="flex-1 w-px bg-gray-200 dark:bg-gray-800 mt-2" />
                                     )}
@@ -75,7 +76,7 @@ export function AboutContent() {
                                     <p className="text-sm text-gray-500 dark:text-gray-400">
                                         {edu.institution}
                                     </p>
-                                    <span className="text-xs text-purple-700 dark:text-purple-400 font-medium mt-0.5 block">
+                                    <span className="text-xs text-brand-600 dark:text-brand-400 font-medium mt-0.5 block">
                                         {edu.year}
                                     </span>
                                 </div>
@@ -83,6 +84,9 @@ export function AboutContent() {
                         ))}
                     </div>
                 </motion.section>
+
+                {/* Tech Stack */}
+                <TechStackSection />
 
                 {/* Certifications — slim cards */}
                 <motion.section
@@ -117,7 +121,7 @@ export function AboutContent() {
                                     href={cert.credentialUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 text-xs font-semibold text-purple-700 dark:text-purple-400 hover:underline shrink-0"
+                                    className="flex items-center gap-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline shrink-0"
                                 >
                                     <FiExternalLink size={12} />
                                     View
@@ -126,15 +130,17 @@ export function AboutContent() {
                         ))}
                     </div>
 
-                    <a
-                        href={personalData.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-purple-700/50 hover:text-purple-700 dark:hover:text-purple-400 transition-all"
-                    >
-                        <FiLinkedin size={16} />
-                        See All on LinkedIn
-                    </a>
+                    <div className="flex justify-center sm:justify-start">
+                        <a
+                            href={personalData.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 w-full sm:w-auto justify-center px-8 py-4 rounded-2xl border border-gray-200 dark:border-gray-800 text-sm font-bold text-gray-700 dark:text-gray-300 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-sm hover:shadow-xl hover:shadow-blue-500/10"
+                        >
+                            <FiLinkedin size={18} />
+                            See All on LinkedIn
+                        </a>
+                    </div>
                 </motion.section>
             </div>
         </div>

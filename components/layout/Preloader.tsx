@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const WORDS = ["where", "ideas", "come", "alive."];
-
 export function Preloader() {
     const [show, setShow] = useState(true);
 
@@ -17,71 +15,45 @@ export function Preloader() {
         <AnimatePresence>
             {show && (
                 <motion.div
-                    key="preloader"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
                     className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden"
-                    style={{ backgroundColor: "#0a0a14" }}
                 >
-                    {/* Grid pattern */}
-                    <div
-                        className="absolute inset-0 opacity-[0.06]"
-                        style={{
-                            backgroundImage:
-                                "linear-gradient(rgba(124,58,237,1) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,1) 1px, transparent 1px)",
-                            backgroundSize: "60px 60px",
-                        }}
+                    {/* Modern Light Background */}
+                    <div className="absolute inset-0 bg-[#f8fafc] dark:bg-[#020617]" />
+                    
+                    {/* Animated Light Beams */}
+                    <motion.div 
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: 0.1, x: 0 }}
+                        transition={{ duration: 1 }}
+                        className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-400 to-transparent skew-y-12 blur-3xl"
                     />
 
-                    {/* Purple glow */}
-                    <div className="absolute top-1/4 right-0 w-[600px] h-[600px] rounded-full bg-purple-700/10 blur-[100px]" />
-                    <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full bg-purple-700/5 blur-[100px]" />
-
-                    {/* Content */}
-                    <div className="relative z-10 flex flex-col items-center gap-8">
-                        {/* Animated words */}
-                        <div className="flex items-center gap-3 flex-wrap justify-center">
-                            {WORDS.map((word, wi) => (
-                                <div key={wi} className="flex overflow-hidden">
-                                    {word.split("").map((char, ci) => (
-                                        <motion.span
-                                            key={ci}
-                                            initial={{ y: 40, opacity: 0 }}
-                                            animate={{ y: 0, opacity: 1 }}
-                                            transition={{
-                                                delay: wi * 0.15 + ci * 0.04,
-                                                duration: 0.5,
-                                                ease: [0.22, 1, 0.36, 1],
-                                            }}
-                                            className={`text-2xl md:text-3xl font-light tracking-wide ${
-                                                word === "alive."
-                                                    ? "text-purple-400"
-                                                    : "text-white/80"
-                                            }`}
-                                            style={{ fontFamily: "var(--font-poppins)" }}
-                                        >
-                                            {char}
-                                        </motion.span>
-                                    ))}
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Thin progress line */}
+                    {/* Simple Fun Element */}
+                    <div className="relative z-10 flex flex-col items-center gap-6">
                         <motion.div
-                            className="w-32 h-px bg-white/10 rounded-full overflow-hidden"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
+                            animate={{ 
+                                rotate: 360,
+                                scale: [1, 1.2, 1] 
+                            }}
+                            transition={{ 
+                                rotate: { duration: 4, repeat: Infinity, ease: "linear" },
+                                scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                            }}
+                            className="text-brand-500 text-5xl flex items-center justify-center leading-none"
                         >
-                            <motion.div
-                                initial={{ width: "0%" }}
-                                animate={{ width: "100%" }}
-                                transition={{ duration: 2, ease: "easeInOut", delay: 0.4 }}
-                                className="h-full bg-gradient-to-r from-purple-700 to-blue-500 rounded-full"
-                            />
+                            ✧
                         </motion.div>
+
+                        <motion.span
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-lg font-bold tracking-tight font-outfit text-gray-900 dark:text-white"
+                        >
+                            ready in a sec...
+                        </motion.span>
                     </div>
                 </motion.div>
             )}

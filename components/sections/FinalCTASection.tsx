@@ -1,57 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiMessageCircle, FiMail } from "react-icons/fi";
+import { FiMessageCircle, FiMail, FiArrowRight } from "react-icons/fi";
 import { personalData } from "@/lib/data/personal";
 
 export function FinalCTASection() {
     return (
-        <section id="cta" className="py-24 section-padding">
+        <section id="cta" className="py-24 section-padding relative">
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 32 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="glass rounded-3xl p-10 md:p-16 text-center relative overflow-hidden"
+                    className="rounded-3xl p-8 sm:p-10 md:p-16 text-center relative overflow-hidden glass"
                 >
-                    {/* Background glow */}
-                    <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-700/15 rounded-full blur-3xl pointer-events-none" />
-                    <div className="absolute -bottom-16 right-8 w-64 h-64 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
+                    {/* Background glow — subtle refinement */}
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none" />
 
                     <div className="relative z-10 flex flex-col items-center gap-6">
-                        <p className="text-xs font-semibold tracking-widest uppercase text-purple-600 dark:text-purple-400">
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-xs font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400"
+                        >
                             Let&apos;s Work Together
-                        </p>
+                        </motion.p>
 
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight">
-                            Ready to build{" "}
-                            <span className="gradient-text">something great?</span>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-950 dark:text-white tracking-tight leading-tight font-outfit">
+                            Ready to build something great?
                         </h2>
 
-                        <p className="text-sm text-gray-500 dark:text-gray-400 max-w-md leading-relaxed">
+                        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl leading-relaxed">
                             I&apos;m open to full-time roles, internships, and freelance projects.
-                            If you&apos;re looking for a developer who ships clean, thoughtful work
+                            If you&apos;re looking for a developer who ships clean, thoughtful work —
                             let&apos;s connect.
                         </p>
 
-                        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                            <a
+                        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+                            <motion.a
                                 href={personalData.whatsapp}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-8 py-3.5 rounded-xl bg-purple-700 text-white text-sm font-semibold hover:bg-purple-600 transition-all hover:shadow-xl hover:shadow-purple-700/40 hover:-translate-y-0.5"
+                                whileHover={{ y: -4, scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="btn-fun shadow-blue-500/20"
                             >
-                                Hire Me
-                                <FiMessageCircle size={16} />
-                            </a>
-                            <a
+                                <span className="flex items-center gap-2">
+                                    Hire Me
+                                    <FiArrowRight size={18} />
+                                </span>
+                            </motion.a>
+                            <motion.a
                                 href={`mailto:${personalData.email}`}
-                                className="flex items-center gap-2 px-8 py-3.5 rounded-xl border border-white/20 text-gray-700 dark:text-gray-200 bg-white/10 text-sm font-semibold hover:bg-white/20 transition-all hover:-translate-y-0.5"
+                                whileHover={{ y: -4, scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="flex items-center gap-2 px-8 py-3.5 rounded-2xl glass font-bold text-gray-700 dark:text-gray-200 transition-all hover:shadow-lg"
                             >
-                                <FiMail size={15} />
+                                <FiMail size={18} />
                                 Send Email
-                            </a>
+                            </motion.a>
                         </div>
                     </div>
                 </motion.div>

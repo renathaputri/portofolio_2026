@@ -6,7 +6,7 @@ import { personalData } from "@/lib/data/personal";
 
 export function VisualDesignSection() {
     return (
-        <section id="design" className="py-24 section-padding bg-gray-50 dark:bg-gray-900/50">
+        <section id="design" className="py-24 section-padding">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 {/* Text */}
                 <motion.div
@@ -17,12 +17,11 @@ export function VisualDesignSection() {
                     className="flex flex-col gap-6"
                 >
                     <div>
-                        <p className="text-xs font-semibold tracking-widest uppercase text-purple-700 dark:text-purple-400 mb-3">
+                        <p className="text-xs font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-3">
                             Design × Development
                         </p>
-                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight">
-                            Visual Design{" "}
-                            <span className="gradient-text">Capability</span>
+                        <h2 className="text-4xl font-extrabold text-gray-950 dark:text-white tracking-tight leading-tight font-outfit">
+                            Visual Design Capability
                         </h2>
                     </div>
 
@@ -39,7 +38,7 @@ export function VisualDesignSection() {
                         href={personalData.graphicPortfolioUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-purple-700/50 hover:text-purple-700 dark:hover:text-purple-400 transition-all w-fit group"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 btn-glass hover:-translate-y-0.5 w-fit group"
                     >
                         <FiExternalLink size={15} />
                         View Graphic Design Portfolio (PDF)
@@ -47,38 +46,38 @@ export function VisualDesignSection() {
                     </a>
                 </motion.div>
 
-                {/* Visual accent */}
+                {/* Visual accent — grid cards */}
                 <motion.div
                     initial={{ opacity: 0, x: 24 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.15 }}
-                    className="grid grid-cols-2 gap-4"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                 >
                     {[
                         {
                             label: "Brand Identity",
                             desc: "Logo systems, visual guidelines, and cohesive brand assets",
-                            color: "from-purple-700/10 to-purple-700/5",
-                            border: "border-purple-700/20",
+                            color: "from-brand-500/10 to-brand-600/5",
+                            border: "border-brand-500/15",
                         },
                         {
                             label: "Creative Direction",
                             desc: "Consistent visual storytelling across digital platforms",
-                            color: "from-blue-500/10 to-blue-500/5",
-                            border: "border-blue-500/20",
+                            color: "from-brand-400/10 to-brand-300/5",
+                            border: "border-brand-400/15",
                         },
                         {
                             label: "User Experience",
                             desc: "Intuitive flows designed to solve real user problems",
-                            color: "from-purple-700/10 to-blue-500/5",
-                            border: "border-purple-700/20",
+                            color: "from-brand-600/10 to-brand-400/5",
+                            border: "border-brand-600/15",
                         },
                         {
                             label: "Interface Design",
                             desc: "Clean, functional UI with strong usability principles",
-                            color: "from-blue-500/10 to-purple-700/5",
-                            border: "border-blue-500/20",
+                            color: "from-brand-300/10 to-brand-500/5",
+                            border: "border-brand-300/15",
                         },
                     ].map((item, i) => (
                         <motion.div
@@ -87,7 +86,8 @@ export function VisualDesignSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
-                            className={`p-5 rounded-2xl border ${item.border} bg-gradient-to-br ${item.color} flex flex-col gap-2`}
+                            whileHover={{ y: -8, scale: 1.02 }}
+                            className={`p-6 rounded-3xl glass border ${item.border} bg-gradient-to-br ${item.color} flex flex-col gap-2 cursor-pointer transition-all hover:shadow-2xl hover:shadow-blue-500/10`}
                         >
                             <h4 className="text-sm font-semibold text-gray-800 dark:text-gray-200">
                                 {item.label}

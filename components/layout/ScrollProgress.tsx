@@ -18,19 +18,27 @@ export function ScrollProgress() {
     }, []);
 
     return (
-        <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-1">
-            {/* Track */}
-            <div className="w-0.5 h-32 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden relative">
+        <>
+            {/* Full-width horizontal progress bar — fixed at top */}
+            <div className="fixed top-0 left-0 right-0 z-[200] h-[3px] bg-transparent">
                 <motion.div
-                    className="absolute top-0 left-0 w-full bg-gradient-to-b from-purple-700 to-blue-500 rounded-full"
-                    style={{ height: `${progress}%` }}
+                    className="h-full bg-gradient-to-r from-brand-600 via-brand-400 to-brand-300 rounded-r-full"
+                    style={{ width: `${progress}%` }}
                     transition={{ duration: 0.05 }}
                 />
+                {/* Glow on the leading edge */}
+                <div
+                    className="absolute top-0 h-[3px] w-16 rounded-full blur-sm bg-brand-400/60"
+                    style={{ left: `calc(${progress}% - 32px)`, display: progress < 1 ? "none" : "block" }}
+                />
             </div>
-            {/* Percentage tooltip on hover */}
-            <span className="text-[10px] text-gray-400 font-poppins tabular-nums">
-                {Math.round(progress)}%
-            </span>
-        </div>
+
+            {/* Desktop side indicator (percentage) */}
+            <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-1">
+                <span className="text-[10px] text-gray-400/60 font-poppins tabular-nums">
+                    {Math.round(progress)}%
+                </span>
+            </div>
+        </>
     );
 }

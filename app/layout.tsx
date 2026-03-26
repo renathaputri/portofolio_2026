@@ -5,7 +5,9 @@ import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Preloader } from "@/components/layout/Preloader";
+import { BackgroundElements } from "@/components/layout/BackgroundElements";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import { CursorGlow } from "@/components/ui/CursorGlow";
 import { personalData } from "@/lib/data/personal";
 
 const poppins = Poppins({
@@ -116,9 +118,12 @@ export default function RootLayout({
             <body className="font-poppins antialiased">
                 <ThemeProvider>
                     <Preloader />
-                    <Navbar />
                     <ScrollProgress />
-                    <main className="pt-16">{children}</main>
+                    <CursorGlow />
+                    <Navbar />
+                    <BackgroundElements />
+                    
+                    <main className="relative pt-24 min-h-screen">{children}</main>
                     <Footer />
                 </ThemeProvider>
             </body>

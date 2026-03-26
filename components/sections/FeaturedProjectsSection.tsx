@@ -2,28 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
 import { featuredProjects } from "@/lib/data/projects";
 
-const variants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 400 : -400, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? -400 : 400, opacity: 0 }),
-};
-
 export function FeaturedProjectsSection() {
-    const [current, setCurrent] = useState(0);
-    const [direction, setDirection] = useState(0);
-
-    const paginate = (dir: number) => {
-        setDirection(dir);
-        setCurrent((prev) => (prev + dir + featuredProjects.length) % featuredProjects.length);
-    };
-
-    const project = featuredProjects[current];
-
     return (
         <section id="projects" className="py-24 section-padding">
             <div className="max-w-7xl mx-auto">
@@ -32,78 +15,72 @@ export function FeaturedProjectsSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-10"
+                    className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12"
                 >
-                    <p className="text-xs font-semibold tracking-widest uppercase text-purple-700 dark:text-purple-400 mb-3">
-                        Selected Work
-                    </p>
-                    <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
-                        Featured Projects
-                    </h2>
+                    <div>
+                        <p className="text-xs font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-3">
+                            Selected Work
+                        </p>
+                        <h2 className="text-4xl font-extrabold text-gray-950 dark:text-white tracking-tight font-outfit">
+                            Featured Projects
+                        </h2>
+                    </div>
+                    <Link
+                        href="/projects"
+                        className="flex items-center gap-1.5 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:gap-2.5 transition-all group"
+                    >
+                        View all projects
+                        <FiArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
                 </motion.div>
 
-                {/* Slider */}
-                <div className="relative overflow-hidden rounded-2xl aspect-video bg-gray-100 dark:bg-gray-900">
-                    <AnimatePresence custom={direction} mode="wait">
+                {/* Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {featuredProjects.map((project, i) => (
                         <motion.div
-                            key={current}
-                            custom={direction}
-                            variants={variants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                            className="absolute inset-0"
+                            key={project.id ?? i}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ type: "spring", stiffness: 200, damping: 20, delay: i * 0.1 }}
+                            className="group relative rounded-3xl overflow-hidden glass card-hover cursor-pointer shadow-sm hover:shadow-2xl hover:shadow-blue-500/10"
                         >
-                            <Image
-                                src={project.image}
-                                alt={project.title}
-                                fill
-                                className="object-cover"
-                                unoptimized
-                            />
-                            {/* Gradient — lebih ringan di mobile biar gambar tetap keliatan */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-
-                            {/* Overlay content */}
-                            <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-8 flex items-end justify-between gap-2">
-                                <div className="min-w-0">
-                                    <p className="hidden sm:block text-xs font-semibold tracking-widest uppercase text-purple-400 mb-2">
-                                        Project {String(current + 1).padStart(2, "0")} / {String(featuredProjects.length).padStart(2, "0")}
-                                    </p>
-                                    <h3 className="text-xs sm:text-3xl font-semibold text-white leading-tight line-clamp-1 sm:line-clamp-2">
-                                        {project.title}
-                                    </h3>
+                            {/* Image */}
+                            <div className="relative aspect-[16/10] overflow-hidden">
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    unoptimized
+                                />
+                                {/* Hover overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                                    <Link
+                                        href="/projects"
+                                        className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white/15 backdrop-blur-sm text-white text-xs font-semibold hover:bg-white/25 transition-all border border-white/10"
+                                    >
+                                        View Project
+                                        <FiArrowUpRight size={13} />
+                                    </Link>
                                 </div>
-                                <Link
-                                    href="/projects"
-                                    className="shrink-0 flex items-center gap-1 sm:gap-2 px-2.5 sm:px-5 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-purple-700 text-white text-[11px] sm:text-sm font-semibold hover:bg-purple-600 transition-all"
-                                >
-                                    View All
-                                    <FiArrowRight size={11} className="sm:hidden" />
-                                    <FiArrowRight size={15} className="hidden sm:block" />
-                                </Link>
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-5">
+                                <p className="text-[10px] font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-2">
+                                    {project.stack?.[0] ?? "Project"}
+                                </p>
+                                <h3 className="text-sm font-bold text-gray-900 dark:text-white leading-snug mb-1.5 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                                    {project.title}
+                                </h3>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">
+                                    {project.description}
+                                </p>
                             </div>
                         </motion.div>
-                    </AnimatePresence>
-
-                    {/* Arrow buttons — ukuran konsisten, keduanya sama */}
-                    <button
-                        onClick={() => paginate(-1)}
-                        aria-label="Previous"
-                        title="Previous project"
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/50 transition-all"
-                    >
-                        <FiArrowLeft size={14} />
-                    </button>
-                    <button
-                        onClick={() => paginate(1)}
-                        aria-label="Next"
-                        title="Next project"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/50 transition-all"
-                    >
-                        <FiArrowRight size={14} />
-                    </button>
+                    ))}
                 </div>
             </div>
         </section>
