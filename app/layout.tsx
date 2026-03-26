@@ -122,8 +122,8 @@ export default function RootLayout({
                     <CursorGlow />
                     <Navbar />
                     <BackgroundElements />
-                    
-                    <main className="relative pt-24 min-h-screen">{children}</main>
+
+                    <main className="relative pt-12 lg:pt-14 min-h-screen">{children}</main>
                     <Footer />
                 </ThemeProvider>
             </body>

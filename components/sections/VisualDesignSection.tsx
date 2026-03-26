@@ -6,8 +6,8 @@ import { personalData } from "@/lib/data/personal";
 
 export function VisualDesignSection() {
     return (
-        <section id="design" className="py-24 section-padding">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <section id="design" className="py-16 lg:py-20 section-padding">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Text */}
                 <motion.div
                     initial={{ opacity: 0, x: -24 }}
@@ -17,10 +17,10 @@ export function VisualDesignSection() {
                     className="flex flex-col gap-6"
                 >
                     <div>
-                        <p className="text-xs font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-3">
+                        <p className="text-[10px] font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-1.5">
                             Design × Development
                         </p>
-                        <h2 className="text-4xl font-extrabold text-gray-950 dark:text-white tracking-tight leading-tight font-outfit">
+                        <h2 className="text-xl md:text-3xl font-extrabold text-gray-950 dark:text-white tracking-tight leading-tight font-outfit">
                             Visual Design Capability
                         </h2>
                     </div>
@@ -38,11 +38,11 @@ export function VisualDesignSection() {
                         href={personalData.graphicPortfolioUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 btn-glass hover:-translate-y-0.5 w-fit group"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-[11px] font-semibold text-gray-700 dark:text-gray-300 btn-glass hover:-translate-y-0.5 w-fit group"
                     >
-                        <FiExternalLink size={15} />
+                        <FiExternalLink size={12} />
                         View Graphic Design Portfolio (PDF)
-                        <span className="text-[10px] text-gray-400 font-normal ml-1">↗ Google Drive</span>
+                        <span className="text-[8px] text-gray-400 font-normal ml-1">↗ Google Drive</span>
                     </a>
                 </motion.div>
 
@@ -52,7 +52,7 @@ export function VisualDesignSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.15 }}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-3"
                 >
                     {[
                         {
@@ -86,13 +86,13 @@ export function VisualDesignSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
-                            whileHover={{ y: -8, scale: 1.02 }}
-                            className={`p-6 rounded-3xl glass border ${item.border} bg-gradient-to-br ${item.color} flex flex-col gap-2 cursor-pointer transition-all hover:shadow-2xl hover:shadow-blue-500/10`}
+                            whileHover={{ y: -6, scale: 1.02 }}
+                            className={`p-4 sm:p-5 rounded-2xl glass border ${item.border} bg-gradient-to-br ${item.color} flex flex-col gap-1.5 cursor-pointer transition-all hover:shadow-xl hover:shadow-blue-500/10`}
                         >
-                            <h4 className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                            <h4 className="text-[13px] font-semibold text-gray-800 dark:text-gray-200">
                                 {item.label}
                             </h4>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                            <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
                                 {item.desc}
                             </p>
                         </motion.div>

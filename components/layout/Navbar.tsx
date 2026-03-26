@@ -50,6 +50,14 @@ export function Navbar() {
         return () => observers.forEach((o) => o.disconnect());
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) setMobileOpen(false);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     const toggleTheme = useCallback(() => {
         setTheme(resolvedTheme === "dark" ? "light" : "dark");
     }, [resolvedTheme, setTheme]);
@@ -61,162 +69,182 @@ export function Navbar() {
     const firstWords = nameParts.join(" ");
 
     return (
-        <>
-            <div className="fixed top-0 left-0 right-0 z-[100]">
-                <motion.header
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className={`transition-all duration-500 ${
-                        mounted && scrolled
-                            ? "glass-light border-b border-black/5 dark:border-white/10 shadow-sm"
-                            : "bg-transparent border-transparent"
+        <div className="fixed top-0 left-0 right-0 z-[100]">
+            {/* ── Main header ── */}
+            <motion.header
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className={`transition-all duration-500 ${mounted && scrolled
+                        ? "glass-light border-b border-black/5 dark:border-white/10 shadow-sm"
+                        : "bg-transparent border-transparent"
                     }`}
-                >
-                    <nav className="section-padding mx-auto w-full max-w-7xl flex items-center justify-between h-16 lg:h-20">
-                        {/* LEFT: Brand + nav links */}
-                        <div className="flex items-center gap-7">
-                            <Link href="/" className="flex items-center gap-2 group outline-none" aria-label="Home">
-                                {mounted && (
-                                    <Image
-                                        src={isDark ? "/logowhite.svg" : "/logo.svg"}
-                                        alt="Logo"
-                                        width={28}
-                                        height={28}
-                                        className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 border-none outline-none ring-0"
-                                        unoptimized
-                                    />
-                                )}
-                                <span className="font-bold text-sm tracking-tight">
-                                    <span className="text-gray-900 dark:text-white">{firstWords} </span>
-                                    <span className="text-blue-600 dark:text-blue-400">{lastWord}</span>
-                                </span>
-                            </Link>
+            >
+                <nav className="section-padding mx-auto w-full max-w-7xl flex items-center justify-between h-12 lg:h-14">
 
-                            <ul className="hidden md:flex items-center gap-1">
-                                {navLinks.map((link) => {
-                                    const sectionKey = link.href.replace("/#", "").replace("/", "");
-                                    const isActive =
-                                        activeSection === sectionKey ||
-                                        (link.href === "/about" && activeSection === "about") ||
-                                        (link.href === "/experience" && activeSection === "experience");
+                    {/* LEFT: Brand + nav links */}
+                    <div className="flex items-center gap-5">
+                        <Link href="/" className="flex items-center gap-1.5 group outline-none" aria-label="Home">
+                            {mounted && (
+                                <Image
+                                    src={isDark ? "/logowhite.svg" : "/logo.svg"}
+                                    alt="Logo"
+                                    width={20}
+                                    height={20}
+                                    className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 border-none outline-none ring-0"
+                                    unoptimized
+                                />
+                            )}
+                            <span className="font-bold text-[11px] tracking-tight">
+                                <span className="text-gray-900 dark:text-white">{firstWords} </span>
+                                <span className="text-blue-600 dark:text-blue-400">{lastWord}</span>
+                            </span>
+                        </Link>
 
-                                    return (
-                                        <li key={link.label}>
-                                            <Link
-                                                href={link.href}
-                                                className={`relative px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 ${
-                                                    isActive
-                                                        ? "text-blue-700 dark:text-blue-300 bg-blue-500/10 dark:bg-blue-400/10"
-                                                        : "text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
+                        {/* Nav links — desktop */}
+                        <ul className="hidden md:flex items-center gap-0.5">
+                            {navLinks.map((link) => {
+                                const sectionKey = link.href.replace("/#", "").replace("/", "");
+                                const isActive =
+                                    activeSection === sectionKey ||
+                                    (link.href === "/about" && activeSection === "about") ||
+                                    (link.href === "/experience" && activeSection === "experience");
+
+                                return (
+                                    <li key={link.label}>
+                                        <Link
+                                            href={link.href}
+                                            className={`relative px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all duration-200 ${isActive
+                                                    ? "text-blue-700 dark:text-blue-300 bg-blue-500/10 dark:bg-blue-400/10"
+                                                    : "text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
                                                 }`}
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </div>
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
 
-                        {/* RIGHT: GitHub + Contact + Theme toggle */}
-                        <div className="hidden md:flex items-center gap-2">
-                            <a
-                                href={personalData.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="GitHub Profile"
-                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-black/[0.03] dark:hover:bg-white/[0.04] transition-all"
-                            >
-                                <FiGithub size={14} />
-                                <span>GitHub</span>
-                            </a>
+                    {/* RIGHT: GitHub + Contact + Theme toggle */}
+                    <div className="hidden md:flex items-center gap-1.5">
+                        <a
+                            href={personalData.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub Profile"
+                            className="flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-medium text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-black/[0.03] dark:hover:bg-white/[0.04] transition-all"
+                        >
+                            <FiGithub size={12} />
+                            <span>GitHub</span>
+                        </a>
 
-                            <a
-                                href={personalData.whatsapp}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-4 py-1.5 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-500 transition-all hover:shadow-md hover:shadow-blue-600/20"
-                            >
-                                Contact Me
-                            </a>
+                        <a
+                            href={personalData.whatsapp}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3 py-1 rounded-lg text-[11px] font-semibold bg-blue-600 text-white hover:bg-blue-500 transition-all hover:shadow-md hover:shadow-blue-600/20"
+                        >
+                            Contact Me
+                        </a>
 
-                            <button
-                                onClick={toggleTheme}
-                                aria-label="Toggle dark mode"
-                                className="w-8 h-8 flex items-center justify-center rounded-xl text-gray-500 dark:text-gray-400 hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all duration-300"
-                            >
-                                {mounted && (isDark ? <FiSun size={14} /> : <FiMoon size={14} />)}
-                            </button>
-                        </div>
+                        <button
+                            onClick={toggleTheme}
+                            aria-label="Toggle dark mode"
+                            className="w-7 h-7 flex items-center justify-center rounded-lg text-gray-500 dark:text-gray-400 hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all duration-300"
+                        >
+                            {mounted && (isDark ? <FiSun size={12} /> : <FiMoon size={12} />)}
+                        </button>
+                    </div>
 
-                        {/* Mobile: theme toggle + hamburger */}
-                        <div className="flex md:hidden items-center gap-1.5">
-                            <button
-                                onClick={toggleTheme}
-                                aria-label="Toggle dark mode"
-                                className="w-8 h-8 flex items-center justify-center rounded-xl text-gray-500 dark:text-gray-400"
-                            >
-                                {mounted && (isDark ? <FiSun size={14} /> : <FiMoon size={14} />)}
-                            </button>
-                            <button
-                                onClick={() => setMobileOpen(!mobileOpen)}
-                                aria-label="Toggle menu"
-                                className="w-8 h-8 flex items-center justify-center rounded-xl text-gray-700 dark:text-gray-300"
-                            >
-                                {mobileOpen ? <FiX size={18} /> : <FiMenu size={18} />}
-                            </button>
-                        </div>
-                    </nav>
-                </motion.header>
+                    {/* Mobile: theme toggle + hamburger */}
+                    <div className="flex md:hidden items-center gap-1">
+                        <button
+                            onClick={toggleTheme}
+                            aria-label="Toggle dark mode"
+                            className="w-7 h-7 flex items-center justify-center rounded-lg text-gray-500 dark:text-gray-400 hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
+                        >
+                            {mounted && (isDark ? <FiSun size={12} /> : <FiMoon size={12} />)}
+                        </button>
+                        <button
+                            onClick={() => setMobileOpen((prev) => !prev)}
+                            aria-label="Toggle menu"
+                            className="w-7 h-7 flex items-center justify-center rounded-lg text-gray-700 dark:text-gray-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
+                        >
+                            {mobileOpen ? <FiX size={15} /> : <FiMenu size={15} />}
+                        </button>
+                    </div>
+                </nav>
+            </motion.header>
 
-                {/* Mobile menu */}
-                <div className="mx-auto w-full max-w-7xl relative px-4 sm:px-6">
-                    <AnimatePresence>
-                        {mobileOpen && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: -8, scale: 0.98 }}
-                                transition={{ duration: 0.2 }}
-                                className="absolute w-full left-0 top-2 mt-2 rounded-2xl overflow-hidden bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/60 dark:border-white/[0.06] shadow-xl z-50"
-                            >
-                                <nav className="flex flex-col gap-1 p-3">
-                                {navLinks.map((link) => (
-                                    <Link
-                                        key={link.label}
-                                        href={link.href}
-                                        onClick={() => setMobileOpen(false)}
-                                        className="px-4 py-3 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                ))}
-                                <div className="flex gap-2 mt-2 px-1">
+            {/* ── Mobile dropdown ── */}
+            <AnimatePresence>
+                {mobileOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            key="backdrop"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.15 }}
+                            className="fixed inset-0 top-12 bg-black/20 dark:bg-black/40 backdrop-blur-sm z-40 md:hidden"
+                            onClick={() => setMobileOpen(false)}
+                        />
+
+                        {/* Menu card */}
+                        <motion.div
+                            key="menu"
+                            initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                            transition={{ duration: 0.18, ease: "easeOut" }}
+                            className="absolute top-12 lg:top-14 left-4 right-4 z-50 md:hidden"
+                        >
+                            <div className="rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200/70 dark:border-white/[0.08] shadow-xl shadow-black/10 dark:shadow-black/40">
+                                {/* Nav links */}
+                                <nav className="flex flex-col p-2">
+                                    {navLinks.map((link) => (
+                                        <Link
+                                            key={link.label}
+                                            href={link.href}
+                                            onClick={() => setMobileOpen(false)}
+                                            className="px-4 py-2.5 rounded-xl text-[11px] font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    ))}
+                                </nav>
+
+                                {/* Divider */}
+                                <div className="mx-4 border-t border-gray-100 dark:border-white/[0.06]" />
+
+                                {/* Bottom action buttons */}
+                                <div className="flex gap-2 p-3">
                                     <a
                                         href={personalData.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200/60 dark:border-gray-700/60 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all"
+                                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl border border-gray-200 dark:border-white/10 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all"
                                     >
-                                        <FiGithub size={15} />
+                                        <FiGithub size={13} />
                                         GitHub
                                     </a>
                                     <a
                                         href={personalData.whatsapp}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex-1 flex items-center justify-center px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-500 transition-all"
+                                        className="flex-1 flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white text-[11px] font-semibold hover:bg-blue-500 transition-all shadow-sm shadow-blue-600/20"
                                     >
                                         Contact Me
                                     </a>
                                 </div>
-                            </nav>
+                            </div>
                         </motion.div>
-                    )}
-                </AnimatePresence>
-                </div>
-            </div>
-        </>
+                    </>
+                )}
+            </AnimatePresence>
+        </div>
     );
 }

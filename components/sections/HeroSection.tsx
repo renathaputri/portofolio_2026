@@ -73,16 +73,16 @@ export function HeroSection() {
 
             <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
                 {/* Left 60% */}
-                <div className="lg:col-span-3 flex flex-col gap-6">
+                <div className="lg:col-span-3 flex flex-col gap-5">
                     {/* Available badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-brand-400/25 bg-brand-500/5 w-fit"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-400/25 bg-brand-500/5 w-fit"
                     >
-                        <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
-                        <span className="text-xs font-medium text-brand-700 dark:text-brand-300">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
+                        <span className="text-[11px] font-medium text-brand-700 dark:text-brand-300">
                             Open to opportunities
                         </span>
                     </motion.div>
@@ -93,17 +93,17 @@ export function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight text-gray-950 dark:text-white tracking-tight font-outfit">
+                        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-950 dark:text-white tracking-tight font-outfit">
                             Hi, I&apos;m{" "}
                             <span className="gradient-text">Renatha</span>
                         </h1>
-                        <div className="mt-4 h-12 flex items-center">
+                        <div className="mt-2 h-8 sm:h-10 flex items-center">
                             <motion.span
                                 key={index}
                                 initial={{ opacity: 0, scale: 0.9, y: 15 }}
                                 animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.9, y: visible ? 0 : -15 }}
                                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                className="text-2xl sm:text-4xl font-bold text-blue-500"
+                                className="text-lg sm:text-2xl font-bold text-blue-500"
                             >
                                 {rotating[index]}
                             </motion.span>
@@ -115,7 +115,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-lg text-gray-500 dark:text-gray-400 max-w-xl leading-relaxed"
+                        className="text-[13px] sm:text-sm text-gray-500 dark:text-gray-400 max-w-xl leading-relaxed"
                     >
                         {personalData.tagline}
                     </motion.p>
@@ -135,10 +135,8 @@ export function HeroSection() {
                             whileTap={{ scale: 0.95 }}
                             className="btn-fun shadow-blue-500/20"
                         >
-                            <span className="flex items-center gap-2">
-                                Hire Me
-                                <FiMessageCircle size={18} />
-                            </span>
+                            Hire Me
+                            <FiMessageCircle size={14} />
                         </motion.a>
                         <motion.a
                             href={personalData.cvUrl}
@@ -146,9 +144,9 @@ export function HeroSection() {
                             rel="noopener noreferrer"
                             whileHover={{ y: -4, scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="flex items-center gap-2 px-8 py-3.5 rounded-2xl glass font-bold text-gray-700 dark:text-gray-200 transition-all hover:shadow-lg"
+                            className="flex items-center gap-1.5 px-4 py-2 rounded-xl glass border border-gray-200/50 dark:border-white/10 font-bold text-gray-700 dark:text-gray-200 transition-all hover:shadow-lg text-[11px] sm:text-xs"
                         >
-                            <FiDownload size={18} />
+                            <FiDownload size={14} />
                             Download CV
                         </motion.a>
                     </motion.div>
