@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiMessageCircle, FiMail, FiArrowRight } from "react-icons/fi";
+import { FiMail, FiArrowRight } from "react-icons/fi";
 import { personalData } from "@/lib/data/personal";
 
 export function FinalCTASection() {

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FiGithub, FiExternalLink, FiArrowUpRight } from "react-icons/fi";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { projects } from "@/lib/data/projects";
 import { personalData } from "@/lib/data/personal";
 
