@@ -8,7 +8,7 @@ import { featuredProjects } from "@/lib/data/projects";
 
 export function FeaturedProjectsSection() {
     return (
-        <section id="projects" className="py-16 lg:py-20 section-padding">
+        <section id="projects" className="py-10 lg:py-16 section-padding">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div

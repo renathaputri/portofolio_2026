@@ -33,27 +33,21 @@ export function Navbar() {
     useEffect(() => {
         const sectionIds = ["hero", "projects", "design", "ai", "cta"];
         const observers: IntersectionObserver[] = [];
-
         sectionIds.forEach((id) => {
             const el = document.getElementById(id);
             if (!el) return;
             const obs = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) setActiveSection(id);
-                },
+                ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
                 { rootMargin: "-40% 0px -40% 0px", threshold: 0 },
             );
             obs.observe(el);
             observers.push(obs);
         });
-
         return () => observers.forEach((o) => o.disconnect());
     }, []);
 
     useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth >= 768) setMobileOpen(false);
-        };
+        const handleResize = () => { if (window.innerWidth >= 768) setMobileOpen(false); };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
@@ -63,21 +57,21 @@ export function Navbar() {
     }, [resolvedTheme, setTheme]);
 
     const isDark = resolvedTheme === "dark";
-
     const nameParts = personalData.fullName.trim().split(" ");
     const lastWord = nameParts.pop();
     const firstWords = nameParts.join(" ");
 
     return (
         <div className="fixed top-0 left-0 right-0 z-[100]">
-            {/* ── Main header ── */}
+
+            {/* ── Header ── */}
             <motion.header
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className={`transition-all duration-500 ${mounted && scrolled
-                        ? "glass-light border-b border-black/5 dark:border-white/10 shadow-sm"
-                        : "bg-transparent border-transparent"
+                    ? "glass-light border-b border-black/5 dark:border-white/10 shadow-sm"
+                    : "bg-transparent border-transparent"
                     }`}
             >
                 <nav className="section-padding mx-auto w-full max-w-7xl flex items-center justify-between h-12 lg:h-14">
@@ -101,7 +95,7 @@ export function Navbar() {
                             </span>
                         </Link>
 
-                        {/* Nav links — desktop */}
+                        {/* Desktop nav links */}
                         <ul className="hidden md:flex items-center gap-0.5">
                             {navLinks.map((link) => {
                                 const sectionKey = link.href.replace("/#", "").replace("/", "");
@@ -109,14 +103,13 @@ export function Navbar() {
                                     activeSection === sectionKey ||
                                     (link.href === "/about" && activeSection === "about") ||
                                     (link.href === "/experience" && activeSection === "experience");
-
                                 return (
                                     <li key={link.label}>
                                         <Link
                                             href={link.href}
-                                            className={`relative px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all duration-200 ${isActive
-                                                    ? "text-blue-700 dark:text-blue-300 bg-blue-500/10 dark:bg-blue-400/10"
-                                                    : "text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
+                                            className={`relative px-2.5 py-1 rounded-lg text-[10px] font-medium tracking-wide transition-all duration-200 ${isActive
+                                                ? "text-blue-700 dark:text-blue-300 bg-blue-500/10 dark:bg-blue-400/10"
+                                                : "text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
                                                 }`}
                                         >
                                             {link.label}
@@ -178,7 +171,7 @@ export function Navbar() {
                 </nav>
             </motion.header>
 
-            {/* ── Mobile dropdown ── */}
+            {/* ── Mobile dropdown — full width ── */}
             <AnimatePresence>
                 {mobileOpen && (
                     <>
@@ -193,49 +186,60 @@ export function Navbar() {
                             onClick={() => setMobileOpen(false)}
                         />
 
-                        {/* Menu card */}
+                        {/* Menu — full width, no margin */}
                         <motion.div
                             key="menu"
                             initial={{ opacity: 0, y: -8, scale: 0.97 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: -8, scale: 0.97 }}
                             transition={{ duration: 0.18, ease: "easeOut" }}
-                            className="absolute top-12 lg:top-14 left-4 right-4 z-50 md:hidden"
+                            className="absolute top-12 lg:top-14 left-0 right-0 z-50 md:hidden"
                         >
-                            <div className="rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200/70 dark:border-white/[0.08] shadow-xl shadow-black/10 dark:shadow-black/40">
-                                {/* Nav links */}
-                                <nav className="flex flex-col p-2">
-                                    {navLinks.map((link) => (
-                                        <Link
-                                            key={link.label}
-                                            href={link.href}
-                                            onClick={() => setMobileOpen(false)}
-                                            className="px-4 py-2.5 rounded-xl text-[11px] font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    ))}
+                            <div className="overflow-hidden bg-white dark:bg-gray-900 border-b border-gray-200/70 dark:border-white/[0.08] shadow-lg shadow-black/10 dark:shadow-black/40">
+
+                                {/* Nav links — rata kiri */}
+                                <nav className="flex flex-col px-4 pt-2 pb-1">
+                                    {navLinks.map((link) => {
+                                        const sectionKey = link.href.replace("/#", "").replace("/", "");
+                                        const isActive =
+                                            activeSection === sectionKey ||
+                                            (link.href === "/about" && activeSection === "about") ||
+                                            (link.href === "/experience" && activeSection === "experience");
+                                        return (
+                                            <Link
+                                                key={link.label}
+                                                href={link.href}
+                                                onClick={() => setMobileOpen(false)}
+                                                className={`px-2 py-2.5 rounded-lg text-[11px] font-medium transition-all ${isActive
+                                                    ? "text-blue-600 dark:text-blue-400"
+                                                    : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                                                    }`}
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        );
+                                    })}
                                 </nav>
 
                                 {/* Divider */}
                                 <div className="mx-4 border-t border-gray-100 dark:border-white/[0.06]" />
 
-                                {/* Bottom action buttons */}
-                                <div className="flex gap-2 p-3">
+                                {/* Action buttons */}
+                                <div className="flex gap-2 px-4 py-3">
                                     <a
                                         href={personalData.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl border border-gray-200 dark:border-white/10 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all"
+                                        className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-gray-200 dark:border-white/10 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all"
                                     >
-                                        <FiGithub size={13} />
+                                        <FiGithub size={12} />
                                         GitHub
                                     </a>
                                     <a
                                         href={personalData.whatsapp}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex-1 flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white text-[11px] font-semibold hover:bg-blue-500 transition-all shadow-sm shadow-blue-600/20"
+                                        className="flex-1 flex items-center justify-center py-2 rounded-lg bg-blue-600 text-white text-[11px] font-semibold hover:bg-blue-500 transition-all"
                                     >
                                         Contact Me
                                     </a>

@@ -28,7 +28,7 @@ const workflows = [
 
 export function AIIntegrationSection() {
     return (
-        <section id="ai" className="py-16 lg:py-20 section-padding">
+        <section id="ai" className="py-10 lg:py-16 section-padding">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div

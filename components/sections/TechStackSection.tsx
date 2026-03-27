@@ -32,7 +32,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-16"
+            className="mb-10"
         >
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-10">
                 Tech Stack

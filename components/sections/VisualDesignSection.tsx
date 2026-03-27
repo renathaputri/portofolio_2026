@@ -6,7 +6,7 @@ import { personalData } from "@/lib/data/personal";
 
 export function VisualDesignSection() {
     return (
-        <section id="design" className="py-16 lg:py-20 section-padding">
+        <section id="design" className="py-10 lg:py-16 section-padding">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Text */}
                 <motion.div

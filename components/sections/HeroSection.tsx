@@ -54,7 +54,7 @@ export function HeroSection() {
         <section
             ref={sectionRef}
             id="hero"
-            className="relative min-h-[calc(100vh-96px)] flex items-center overflow-hidden section-padding py-16 md:py-24"
+            className="relative min-h-[calc(100vh-96px)] flex items-center overflow-hidden section-padding py-10 md:py-16"
         >
             {/* Background decoration */}
             <div className="absolute inset-0 -z-10">
