@@ -54,11 +54,10 @@ export function HeroSection() {
         <section
             ref={sectionRef}
             id="hero"
-            className="relative min-h-[calc(100vh-96px)] flex items-center overflow-hidden section-padding py-10 md:py-16"
+            className="relative min-h-[calc(100vh-48px)] lg:min-h-[calc(100vh-56px)] flex items-center overflow-hidden section-padding py-10 md:py-16"
         >
             {/* Background decoration */}
             <div className="absolute inset-0 -z-10">
-                {/* Interactive Spotlight follows cursor (keeping for premium feel) */}
                 <div
                     className="absolute pointer-events-none rounded-full bg-blue-500/10 dark:bg-blue-400/10 blur-[120px]"
                     style={{
@@ -168,11 +167,11 @@ export function HeroSection() {
                                     title={label}
                                     initial={{ opacity: 0, scale: 0 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ 
-                                        delay: 0.5 + i * 0.1, 
-                                        type: "spring", 
-                                        stiffness: 400, 
-                                        damping: 15 
+                                    transition={{
+                                        delay: 0.5 + i * 0.1,
+                                        type: "spring",
+                                        stiffness: 400,
+                                        damping: 15
                                     }}
                                     className="w-8 h-8 rounded-full flex items-center justify-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border-2 border-white dark:border-gray-950 text-gray-400 hover:text-blue-500 hover:scale-150 hover:z-20 transition-all duration-300 cursor-default shadow-sm"
                                     style={{ marginLeft: i === 0 ? 0 : -12 }}
@@ -188,21 +187,17 @@ export function HeroSection() {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ 
-                        type: "spring", 
-                        stiffness: 100, 
+                    transition={{
+                        type: "spring",
+                        stiffness: 100,
                         damping: 20,
-                        delay: 0.2 
+                        delay: 0.2
                     }}
                     className="hidden lg:flex lg:col-span-2 justify-center items-center"
                 >
                     <div className="relative w-full max-w-sm group">
-                        {/* Glow background */}
                         <div className="absolute -inset-8 rounded-[3rem] bg-gradient-radial from-blue-500/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                        {/* Main card */}
                         <div className="relative rounded-3xl border border-white/10 bg-gray-900/90 backdrop-blur-md overflow-hidden shadow-2xl transition-all duration-500 group-hover:scale-[1.05] group-hover:-rotate-1 group-hover:shadow-blue-500/10">
-                            {/* Dot row */}
                             <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
                                 <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
                                 <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
@@ -211,8 +206,6 @@ export function HeroSection() {
                                     portfolio.tsx
                                 </span>
                             </div>
-
-                            {/* Code preview */}
                             <div className="p-4 font-mono text-xs leading-relaxed space-y-1">
                                 <p>
                                     <span className="text-brand-400">const</span>{" "}
@@ -248,22 +241,13 @@ export function HeroSection() {
                                     ready for hire
                                 </p>
                             </div>
-
-                            {/* Bottom toolbar */}
                             <div className="flex items-center justify-between px-4 py-2 border-t border-white/5 bg-white/2">
                                 <div className="flex gap-3">
                                     {["TypeScript", "React", "Next.js"].map((t) => (
-                                        <span
-                                            key={t}
-                                            className="text-[10px] text-gray-500 font-mono"
-                                        >
-                                            {t}
-                                        </span>
+                                        <span key={t} className="text-[10px] text-gray-500 font-mono">{t}</span>
                                     ))}
                                 </div>
-                                <span className="text-[10px] text-green-500 font-mono">
-                                    ✓ deployed
-                                </span>
+                                <span className="text-[10px] text-green-500 font-mono">✓ deployed</span>
                             </div>
                         </div>
                     </div>

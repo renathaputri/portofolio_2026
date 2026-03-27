@@ -38,11 +38,10 @@ export function VisualDesignSection() {
                         href={personalData.graphicPortfolioUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-[11px] font-semibold text-gray-700 dark:text-gray-300 btn-glass hover:-translate-y-0.5 w-fit group"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl glass border border-gray-200/50 dark:border-white/10 font-bold text-gray-700 dark:text-gray-200 transition-all hover:shadow-lg text-[11px] w-fit"
                     >
-                        <FiExternalLink size={12} />
-                        View Graphic Design Portfolio (PDF)
-                        <span className="text-[8px] text-gray-400 font-normal ml-1">↗ Google Drive</span>
+                        <FiExternalLink size={14} />
+                        View Graphic Design Portfolio
                     </a>
                 </motion.div>
 

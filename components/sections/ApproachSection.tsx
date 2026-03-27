@@ -29,7 +29,7 @@ export function ApproachSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="max-w-2xl mx-auto text-center mb-16"
+                    className="max-w-2xl text-left md:text-center md:mx-auto mb-10"
                 >
                     <p className="text-[10px] font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-1.5">
                         How I Work
@@ -47,7 +47,7 @@ export function ApproachSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: i * 0.15 }}
-                            className="flex flex-col items-center text-center gap-4 group"
+                            className="flex flex-col items-start md:items-center text-left md:text-center gap-3 group"
                         >
                             <div className="w-10 h-10 rounded-xl glass flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-500 shadow-sm text-gray-800 dark:text-gray-200">
                                 {item.icon}
