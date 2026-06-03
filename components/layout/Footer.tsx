@@ -5,11 +5,11 @@ export function Footer() {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="border-t border-gray-100 dark:border-gray-800 py-12">
-            <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <footer className="border-t border-border-default py-12 bg-bg-primary">
+            <div className="max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-6">
                 {/* Brand */}
                 <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                    <span className="text-[14px] text-text-secondary font-medium">
                         © {year} {personalData.fullName}.
                     </span>
                 </div>
@@ -21,25 +21,25 @@ export function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"
-                        className="text-gray-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                        className="text-text-secondary hover:text-text-primary transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse rounded-sm"
                     >
-                        <FiGithub size={17} />
+                        <FiGithub size={20} />
                     </a>
                     <a
                         href={personalData.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn"
-                        className="text-gray-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                        className="text-text-secondary hover:text-text-primary transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse rounded-sm"
                     >
-                        <FiLinkedin size={17} />
+                        <FiLinkedin size={20} />
                     </a>
                     <a
                         href={`mailto:${personalData.email}`}
                         aria-label="Email"
-                        className="text-gray-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                        className="text-text-secondary hover:text-text-primary transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse rounded-sm"
                     >
-                        <FiMail size={17} />
+                        <FiMail size={20} />
                     </a>
                 </div>
             </div>

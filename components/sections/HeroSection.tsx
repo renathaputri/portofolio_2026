@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiMessageCircle, FiDownload } from "react-icons/fi";
+import { FiArrowRight, FiDownload } from "react-icons/fi";
 import {
     SiNextdotjs,
     SiTypescript,
@@ -25,8 +25,6 @@ const stackIcons = [
 export function HeroSection() {
     const [index, setIndex] = useState(0);
     const [visible, setVisible] = useState(true);
-    const [mouse, setMouse] = useState({ x: 0, y: 0 });
-    const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -39,49 +37,23 @@ export function HeroSection() {
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        const el = sectionRef.current;
-        if (!el) return;
-        const handleMove = (e: MouseEvent) => {
-            const rect = el.getBoundingClientRect();
-            setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-        };
-        el.addEventListener("mousemove", handleMove);
-        return () => el.removeEventListener("mousemove", handleMove);
-    }, []);
-
     return (
         <section
-            ref={sectionRef}
             id="hero"
-            className="relative min-h-[calc(100vh-48px)] lg:min-h-[calc(100vh-56px)] flex items-center overflow-hidden section-padding py-10 md:py-16"
+            className="relative min-h-[calc(100vh-60px)] flex items-center overflow-hidden py-16"
         >
-            {/* Background decoration */}
-            <div className="absolute inset-0 -z-10">
-                <div
-                    className="absolute pointer-events-none rounded-full bg-blue-500/10 dark:bg-blue-400/10 blur-[120px]"
-                    style={{
-                        width: 600,
-                        height: 600,
-                        left: mouse.x - 300,
-                        top: mouse.y - 300,
-                        transition: "left 0.15s ease-out, top 0.15s ease-out",
-                    }}
-                />
-            </div>
-
-            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+            <div className="w-full max-w-[1200px] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
                 {/* Left 60% */}
-                <div className="lg:col-span-3 flex flex-col gap-5">
+                <div className="lg:col-span-3 flex flex-col gap-6">
                     {/* Available badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-400/25 bg-brand-500/5 w-fit"
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-pill border border-border-default bg-bg-secondary w-fit"
                     >
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
-                        <span className="text-[11px] font-medium text-brand-700 dark:text-brand-300">
+                        <span className="w-1.5 h-1.5 rounded-full bg-text-primary" />
+                        <span className="text-[12px] font-medium text-text-secondary">
                             Open to opportunities
                         </span>
                     </motion.div>
@@ -92,17 +64,16 @@ export function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-950 dark:text-white tracking-tight font-outfit">
-                            Hi, I&apos;m{" "}
-                            <span className="gradient-text">Renatha</span>
+                        <h1 className="text-[36px] sm:text-[48px] font-semibold leading-[1.1] text-text-primary tracking-[-0.03em]">
+                            Hi, I&apos;m Renatha
                         </h1>
-                        <div className="mt-2 h-8 sm:h-10 flex items-center">
+                        <div className="mt-2 h-10 flex items-center">
                             <motion.span
                                 key={index}
-                                initial={{ opacity: 0, scale: 0.9, y: 15 }}
-                                animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.9, y: visible ? 0 : -15 }}
-                                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                className="text-lg sm:text-2xl font-bold text-blue-500"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-[22px] sm:text-[32px] font-semibold text-text-secondary tracking-[-0.02em]"
                             >
                                 {rotating[index]}
                             </motion.span>
@@ -114,7 +85,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-[13px] sm:text-sm text-gray-500 dark:text-gray-400 max-w-xl leading-relaxed"
+                        className="text-[16px] text-text-secondary max-w-xl leading-[1.6]"
                     >
                         {personalData.tagline}
                     </motion.p>
@@ -124,30 +95,26 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                        className="flex flex-wrap gap-4 pt-4"
+                        className="flex flex-wrap gap-3 pt-2"
                     >
-                        <motion.a
+                        <a
                             href={personalData.whatsapp}
                             target="_blank"
                             rel="noopener noreferrer"
-                            whileHover={{ y: -4, scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="btn-fun shadow-blue-500/20"
+                            className="flex items-center gap-2 px-6 py-3 h-[44px] rounded-pill bg-bg-inverse text-text-inverse text-[14px] font-medium hover:opacity-85 active:opacity-75 transition-opacity focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
                         >
                             Hire Me
-                            <FiMessageCircle size={14} />
-                        </motion.a>
-                        <motion.a
+                            <FiArrowRight size={16} />
+                        </a>
+                        <a
                             href={personalData.cvUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            whileHover={{ y: -4, scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="flex items-center gap-1.5 px-4 py-2 rounded-xl glass border border-gray-200/50 dark:border-white/10 font-bold text-gray-700 dark:text-gray-200 transition-all hover:shadow-lg text-[11px] sm:text-xs"
+                            className="flex items-center gap-2 px-6 py-3 h-[44px] rounded-pill bg-bg-primary text-text-primary border border-border-default text-[14px] font-medium hover:bg-bg-secondary hover:border-border-strong active:bg-bg-tertiary transition-all focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
                         >
-                            <FiDownload size={14} />
+                            <FiDownload size={16} />
                             Download CV
-                        </motion.a>
+                        </a>
                     </motion.div>
 
                     {/* Currently into */}
@@ -155,29 +122,20 @@ export function HeroSection() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.45 }}
-                        className="flex items-center gap-3 pt-2"
+                        className="flex items-center gap-4 pt-4"
                     >
-                        <span className="text-xs text-gray-400 font-medium">
-                            Currently into
+                        <span className="text-[12px] text-text-tertiary font-medium uppercase tracking-[0.08em]">
+                            Stack
                         </span>
-                        <div className="flex items-center">
-                            {stackIcons.map(({ icon: Icon, label }, i) => (
-                                <motion.div
+                        <div className="flex items-center gap-3">
+                            {stackIcons.map(({ icon: Icon, label }) => (
+                                <div
                                     key={label}
                                     title={label}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{
-                                        delay: 0.5 + i * 0.1,
-                                        type: "spring",
-                                        stiffness: 400,
-                                        damping: 15
-                                    }}
-                                    className="w-8 h-8 rounded-full flex items-center justify-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border-2 border-white dark:border-gray-950 text-gray-400 hover:text-blue-500 hover:scale-150 hover:z-20 transition-all duration-300 cursor-default shadow-sm"
-                                    style={{ marginLeft: i === 0 ? 0 : -12 }}
+                                    className="text-text-secondary hover:text-text-primary transition-colors"
                                 >
-                                    <Icon size={15} />
-                                </motion.div>
+                                    <Icon size={18} />
+                                </div>
                             ))}
                         </div>
                     </motion.div>
@@ -185,69 +143,47 @@ export function HeroSection() {
 
                 {/* Right 40% — Code card (desktop only) */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 20,
-                        delay: 0.2
-                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
                     className="hidden lg:flex lg:col-span-2 justify-center items-center"
                 >
-                    <div className="relative w-full max-w-sm group">
-                        <div className="absolute -inset-8 rounded-[3rem] bg-gradient-radial from-blue-500/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                        <div className="relative rounded-3xl border border-white/10 bg-gray-900/90 backdrop-blur-md overflow-hidden shadow-2xl transition-all duration-500 group-hover:scale-[1.05] group-hover:-rotate-1 group-hover:shadow-blue-500/10">
-                            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
-                                <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-                                <span className="ml-auto text-[10px] text-gray-500 font-mono">
-                                    portfolio.tsx
+                    <div className="relative w-full max-w-sm">
+                        <div className="rounded-large border border-border-default bg-bg-secondary overflow-hidden shadow-l2">
+                            <div className="flex items-center gap-2 px-4 py-3 border-b border-border-default bg-bg-primary">
+                                <span className="text-[11px] font-medium text-text-tertiary uppercase tracking-[0.08em]">
+                                    config.ts
                                 </span>
                             </div>
-                            <div className="p-4 font-mono text-xs leading-relaxed space-y-1">
+                            <div className="p-5 font-mono text-[13px] leading-[1.5] space-y-1 text-text-secondary">
                                 <p>
-                                    <span className="text-brand-400">const</span>{" "}
-                                    <span className="text-blue-300">Renatha</span>{" "}
-                                    <span className="text-gray-300">= {"{"}</span>
+                                    <span className="text-text-primary font-medium">const</span>{" "}
+                                    Renatha{" "}
+                                    <span className="text-text-primary font-medium">= {"{"}</span>
                                 </p>
                                 <p className="pl-4">
-                                    <span className="text-green-400">role:</span>{" "}
-                                    <span className="text-yellow-300">&apos;Frontend Dev&apos;</span>,
+                                    role: <span className="text-text-primary font-medium">&apos;Frontend Dev&apos;</span>,
                                 </p>
                                 <p className="pl-4">
-                                    <span className="text-green-400">focus:</span>{" "}
-                                    <span className="text-yellow-300">&apos;React + Next.js&apos;</span>,
+                                    focus: <span className="text-text-primary font-medium">&apos;React + Next.js&apos;</span>,
                                 </p>
                                 <p className="pl-4">
-                                    <span className="text-green-400">design:</span>{" "}
-                                    <span className="text-brand-300">true</span>,
+                                    design: <span className="text-text-primary font-medium">true</span>,
                                 </p>
                                 <p className="pl-4">
-                                    <span className="text-green-400">aiAware:</span>{" "}
-                                    <span className="text-brand-300">true</span>,
+                                    aiAware: <span className="text-text-primary font-medium">true</span>,
                                 </p>
                                 <p>
-                                    <span className="text-gray-300">{"}"}</span>
+                                    <span className="text-text-primary font-medium">{"}"}</span>
                                 </p>
                                 <p className="pt-2">
-                                    <span className="text-brand-400">export default</span>{" "}
-                                    <span className="text-blue-300">Renatha</span>
-                                    <span className="text-gray-300">;</span>
+                                    <span className="text-text-primary font-medium">export default</span>{" "}
+                                    Renatha;
                                 </p>
-                                <p className="pt-3 flex items-center gap-1 text-gray-500">
-                                    <span className="inline-block w-2 h-4 bg-brand-500 animate-pulse rounded-sm" />
-                                    ready for hire
+                                <p className="pt-4 flex items-center gap-2 text-[12px] text-text-tertiary">
+                                    <span className="inline-block w-2 h-2 rounded-full bg-text-primary" />
+                                    Ready for new opportunities
                                 </p>
-                            </div>
-                            <div className="flex items-center justify-between px-4 py-2 border-t border-white/5 bg-white/2">
-                                <div className="flex gap-3">
-                                    {["TypeScript", "React", "Next.js"].map((t) => (
-                                        <span key={t} className="text-[10px] text-gray-500 font-mono">{t}</span>
-                                    ))}
-                                </div>
-                                <span className="text-[10px] text-green-500 font-mono">✓ deployed</span>
                             </div>
                         </div>
                     </div>

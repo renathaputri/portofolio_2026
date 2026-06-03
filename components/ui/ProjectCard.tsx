@@ -18,40 +18,40 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.08 }}
             whileHover={{ y: -4 }}
-            className="group flex flex-col rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-brand-500/35 dark:hover:border-brand-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-brand-500/8"
+            className="group flex flex-col rounded-default overflow-hidden bg-bg-primary border border-border-default hover:border-border-strong transition-all duration-300 hover:shadow-l2 shadow-l1"
         >
             {/* Image */}
-            <div className="relative w-full aspect-[16/9] bg-gray-100 dark:bg-gray-800 overflow-hidden">
+            <div className="relative w-full aspect-[16/9] bg-bg-secondary overflow-hidden">
                 <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover grayscale group-hover:grayscale-0 transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     unoptimized
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-overlay-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             {/* Content */}
-            <div className="flex flex-col flex-1 p-5 gap-3">
+            <div className="flex flex-col flex-1 p-6 gap-4">
                 {/* Availability */}
                 <div className="flex items-center gap-2">
                     <span
-                        className={`inline-block w-2 h-2 rounded-full ${project.available ? "bg-brand-500" : "bg-gray-400"}`}
+                        className={`inline-block w-2 h-2 rounded-full ${project.available ? "bg-text-primary" : "bg-text-tertiary"}`}
                     />
-                    <span className="text-[11px] font-medium text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                    <span className="text-[11px] font-medium text-text-tertiary uppercase tracking-[0.08em]">
                         {project.available ? "Available" : "Private"}
                     </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-base font-semibold text-gray-900 dark:text-white leading-snug">
+                <h3 className="text-[16px] font-medium text-text-primary leading-[1.5]">
                     {project.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed flex-1 line-clamp-3">
+                <p className="text-[14px] text-text-secondary leading-[1.6] flex-1 line-clamp-3">
                     {project.description}
                 </p>
 
@@ -60,7 +60,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                     {project.stack.map((tech) => (
                         <span
                             key={tech}
-                            className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
+                            className="px-3 py-1 rounded-small text-[12px] font-medium bg-bg-secondary text-text-secondary border border-border-default"
                         >
                             {tech}
                         </span>
@@ -68,21 +68,21 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 pt-1">
+                <div className="flex items-center gap-3 pt-2">
                     {project.available ? (
                         <a
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View ${project.title} on GitHub`}
-                            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-brand-600 text-white hover:bg-brand-700 hover:shadow-md hover:shadow-brand-600/25 transition-all"
+                            className="flex items-center gap-2 px-4 py-2 rounded-small text-[14px] font-medium bg-bg-inverse text-text-inverse hover:opacity-90 transition-opacity focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
                         >
-                            <FiGithub size={13} />
+                            <FiGithub size={16} />
                             GitHub
                         </a>
                     ) : (
-                        <span className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed select-none">
-                            <FiGithub size={13} />
+                        <span className="flex items-center gap-2 px-4 py-2 rounded-small text-[14px] font-medium bg-bg-secondary text-text-tertiary cursor-not-allowed select-none border border-border-default">
+                            <FiGithub size={16} />
                             Private
                         </span>
                     )}
@@ -92,9 +92,9 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`Live demo of ${project.title}`}
-                            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-brand-500/50 hover:text-brand-600 dark:hover:text-brand-400 transition-all"
+                            className="flex items-center gap-2 px-4 py-2 rounded-small text-[14px] font-medium border border-border-default text-text-primary hover:bg-bg-secondary hover:border-border-strong transition-all focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
                         >
-                            <FiExternalLink size={13} />
+                            <FiExternalLink size={16} />
                             Live Demo
                         </a>
                     )}

@@ -8,72 +8,75 @@ import { featuredProjects } from "@/lib/data/projects";
 
 export function FeaturedProjectsSection() {
     return (
-        <section id="projects" className="py-10 lg:py-16 section-padding">
-            <div className="max-w-7xl mx-auto">
+        <section id="projects" className="py-16">
+            <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12"
+                    className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8"
                 >
                     <div>
-                        <p className="text-[10px] font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-1.5">
+                        <p className="text-[12px] font-medium tracking-[0.08em] uppercase text-text-tertiary mb-2">
                             Selected Work
                         </p>
-                        <h2 className="text-xl md:text-3xl font-extrabold text-gray-950 dark:text-white tracking-tight font-outfit">
+                        <h2 className="text-[22px] md:text-[32px] font-semibold text-text-primary tracking-[-0.02em] leading-[1.2]">
                             Featured Projects
                         </h2>
                     </div>
                     <Link
                         href="/projects"
-                        className="flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-brand-600 dark:text-brand-400 hover:gap-2.5 transition-all group"
+                        className="flex items-center gap-1.5 text-[14px] font-medium text-text-primary underline underline-offset-4 decoration-border-strong hover:decoration-text-primary focus:outline-none focus:ring-[3px] focus:ring-border-inverse rounded-sm transition-all group"
                     >
                         View all projects
-                        <FiArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <FiArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </Link>
                 </motion.div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {featuredProjects.map((project, i) => (
                         <motion.div
                             key={project.id ?? i}
                             initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ type: "spring", stiffness: 200, damping: 20, delay: i * 0.1 }}
-                            className="group relative rounded-3xl overflow-hidden glass card-hover cursor-pointer shadow-sm hover:shadow-2xl hover:shadow-blue-500/10"
+                            transition={{ duration: 0.5, delay: i * 0.1 }}
+                            className="group flex flex-col rounded-default bg-bg-primary border border-border-default hover:border-border-strong shadow-l1 hover:shadow-l2 transition-all duration-300 overflow-hidden"
                         >
                             {/* Image */}
-                            <div className="relative aspect-[16/10] overflow-hidden">
+                            <div className="relative w-full aspect-[16/10] bg-bg-secondary overflow-hidden">
                                 <Image
                                     src={project.image}
                                     alt={project.title}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     unoptimized
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <div className="absolute inset-0 bg-overlay-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                     <Link
                                         href="/projects"
-                                        className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white/15 backdrop-blur-sm text-white text-[10px] font-semibold hover:bg-white/25 transition-all border border-white/10"
+                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-small bg-bg-primary text-text-primary text-[12px] font-medium border border-border-default hover:bg-bg-secondary focus:outline-none focus:ring-[3px] focus:ring-border-inverse transition-all"
                                     >
                                         View Project
-                                        <FiArrowUpRight size={11} />
+                                        <FiArrowUpRight size={14} />
                                     </Link>
                                 </div>
                             </div>
 
-                            <div className="p-4 sm:p-5">
-                                <p className="text-[9px] font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-1.5">
-                                    {project.stack?.[0] ?? "Project"}
-                                </p>
-                                <h3 className="text-[13px] font-bold text-gray-900 dark:text-white leading-snug mb-1 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            <div className="p-6 flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                    <span className={`inline-block w-2 h-2 rounded-full ${project.available ? "bg-text-primary" : "bg-text-tertiary"}`} />
+                                    <p className="text-[11px] font-medium tracking-[0.08em] uppercase text-text-tertiary">
+                                        {project.stack?.[0] ?? "Project"}
+                                    </p>
+                                </div>
+                                <h3 className="text-[16px] font-medium text-text-primary leading-[1.5]">
                                     {project.title}
                                 </h3>
-                                <p className="text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">
+                                <p className="text-[14px] text-text-secondary line-clamp-2 leading-[1.6]">
                                     {project.description}
                                 </p>
                             </div>

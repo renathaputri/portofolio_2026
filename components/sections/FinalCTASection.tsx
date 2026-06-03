@@ -6,60 +6,53 @@ import { personalData } from "@/lib/data/personal";
 
 export function FinalCTASection() {
     return (
-        <section id="cta" className="py-10 lg:py-16 section-padding relative">
-            <div className="max-w-4xl mx-auto">
+        <section id="cta" className="py-16">
+            <div className="max-w-[800px] mx-auto px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 32 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="rounded-3xl p-6 sm:p-8 md:p-12 text-center relative overflow-hidden glass"
+                    className="rounded-large p-8 sm:p-12 text-center bg-bg-inverse text-text-inverse overflow-hidden"
                 >
-                    {/* Background glow — subtle refinement */}
-                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none" />
-
-                    <div className="relative z-10 flex flex-col items-center gap-4">
+                    <div className="relative flex flex-col items-center gap-6">
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-[10px] font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400"
+                            className="text-[12px] font-medium tracking-[0.08em] uppercase opacity-70"
                         >
                             Let&apos;s Work Together
                         </motion.p>
 
-                        <h2 className="text-xl md:text-2xl font-extrabold text-gray-950 dark:text-white tracking-tight leading-tight font-outfit">
+                        <h2 className="text-[22px] md:text-[32px] font-semibold tracking-[-0.02em] leading-[1.2]">
                             Ready to build something great?
                         </h2>
 
-                        <p className="text-[13px] sm:text-sm text-gray-500 dark:text-gray-400 max-w-xl leading-relaxed">
+                        <p className="text-[16px] max-w-xl leading-[1.6] opacity-80">
                             I&apos;m open to full-time roles, internships, and freelance projects.
                             If you&apos;re looking for a developer who ships clean, thoughtful work —
                             let&apos;s connect.
                         </p>
 
-                        <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
-                            <motion.a
+                        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+                            <a
                                 href={personalData.whatsapp}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                whileHover={{ y: -4, scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="btn-fun shadow-blue-500/20"
+                                className="flex items-center gap-2 px-6 py-3 h-[44px] rounded-pill bg-bg-primary text-text-primary text-[14px] font-medium hover:opacity-90 active:opacity-80 transition-opacity focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
                             >
                                 Hire Me
-                                <FiArrowRight size={14} />
-                            </motion.a>
-                            <motion.a
+                                <FiArrowRight size={16} />
+                            </a>
+                            <a
                                 href={`mailto:${personalData.email}`}
-                                whileHover={{ y: -4, scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="flex items-center gap-1.5 px-4 py-2 rounded-xl glass border border-gray-200/50 dark:border-white/10 font-bold text-gray-700 dark:text-gray-200 transition-all hover:shadow-lg text-[11px] sm:text-xs"
+                                className="flex items-center gap-2 px-6 py-3 h-[44px] rounded-pill bg-transparent text-text-inverse border border-border-inverse text-[14px] font-medium hover:bg-overlay-subtle active:bg-overlay-medium transition-all focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
                             >
-                                <FiMail size={14} />
+                                <FiMail size={16} />
                                 Send Email
-                            </motion.a>
+                            </a>
                         </div>
                     </div>
                 </motion.div>

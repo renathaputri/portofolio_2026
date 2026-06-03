@@ -7,7 +7,7 @@ export function Preloader() {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShow(false), 2500);
+    const timer = setTimeout(() => setShow(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -17,50 +17,22 @@ export function Preloader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden"
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-bg-primary"
         >
-          {/* Background */}
-          <div className="absolute inset-0 bg-[#f8fafc] dark:bg-[#020617]" />
-
-          {/* Soft gradient glow */}
+          {/* Minimalist block animation */}
           <motion.div
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.35, 0.2],
+              rotate: [0, 90, 180, 270, 360],
+              borderRadius: ["20%", "20%", "50%", "50%", "20%"]
             }}
             transition={{
-              duration: 3,
+              duration: 2,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute w-[300px] h-[300px] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(33,150,243,0.25) 0%, transparent 70%)",
-              filter: "blur(60px)",
-            }}
+            className="w-10 h-10 bg-bg-inverse"
           />
-
-          {/* Floating blocks (biar ada motion tapi subtle) */}
-          <div className="relative z-10 flex gap-3">
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  y: [0, -14, 0],
-                  opacity: [0.4, 1, 0.4],
-                }}
-                transition={{
-                  duration: 1.6,
-                  delay: i * 0.2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="w-3 h-3 rounded-full bg-blue-500"
-              />
-            ))}
-          </div>
         </motion.div>
       )}
     </AnimatePresence>

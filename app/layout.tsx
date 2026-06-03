@@ -1,33 +1,33 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Preloader } from "@/components/layout/Preloader";
-import { BackgroundElements } from "@/components/layout/BackgroundElements";
-import { ScrollProgress } from "@/components/layout/ScrollProgress";
-import { CursorGlow } from "@/components/ui/CursorGlow";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { personalData } from "@/lib/data/personal";
 
-const poppins = Poppins({
-    weight: ["300", "400", "500", "600", "700", "800"],
+const geistSans = Geist({
+    variable: "--font-geist-sans",
     subsets: ["latin"],
-    variable: "--font-poppins",
-    display: "swap",
+});
+
+const geistMono = Geist_Mono({
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
     title: {
-        default: `${personalData.fullName} — Frontend Developer`,
+        default: `${personalData.fullName} — Web Developer`,
         template: `%s | ${personalData.fullName}`,
     },
     description:
-        "Frontend developer with a designer's eye. Specializing in React, Next.js, and modern frontend frameworks. Building clean, intuitive web products for startups and businesses.",
+        "Web developer with a designer's eye. Specializing in React, Next.js, and modern frontend frameworks. Building clean, intuitive web products for startups and businesses.",
     keywords: [
         "Frontend Developer",
-        "Frontend Engineer",
         "Fullstack Engineer",
         "React Developer",
         "Next.js Developer",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         "Graphic Designer",
         "AI-Aware Developer",
         "Renatha Putri",
-        "Renatha Putri S",
+        "Renatha Putri Salfainy",
         "Portfolio",
         "Web Portfolio",
         "Indonesia",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     openGraph: {
         type: "website",
         locale: "en_US",
-        title: `${personalData.fullName} — Frontend Developer`,
+        title: `${personalData.fullName} — Web Developer`,
         description:
-            "Frontend developer with a designer's eye. Specializing in React, Next.js, and modern frontend frameworks.",
+            "Web developer with a designer's eye. Specializing in React, Next.js, and modern frontend frameworks.",
         siteName: personalData.fullName,
         images: [
             {
@@ -71,9 +71,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: `${personalData.fullName} — Frontend Developer`,
+        title: `${personalData.fullName} — Web Developer`,
         description:
-            "Frontend developer with a designer's eye. Specializing in React, Next.js, and modern frontend frameworks.",
+            "Web developer with a designer's eye. Specializing in React, Next.js, and modern frontend frameworks.",
         images: ["/og-image.png"],
     },
     robots: {
@@ -100,7 +100,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning className={poppins.variable}>
+        <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
             <head>
                 <script
                     dangerouslySetInnerHTML={{
@@ -115,15 +115,13 @@ export default function RootLayout({
                     }}
                 />
             </head>
-            <body className="font-poppins antialiased">
+            <body className="font-sans antialiased bg-bg-primary text-text-primary">
                 <ThemeProvider>
                     <Preloader />
-                    <ScrollProgress />
-                    <CursorGlow />
                     <Navbar />
-                    <BackgroundElements />
 
-                    <main className="relative pt-12 lg:pt-14 min-h-screen">{children}</main>
+                    <main className="relative pt-16 min-h-screen">{children}</main>
+                    <ScrollToTop />
                     <Footer />
                 </ThemeProvider>
             </body>
