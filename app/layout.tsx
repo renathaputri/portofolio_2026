@@ -120,7 +120,7 @@ export default function RootLayout({
                     <Preloader />
                     <Navbar />
 
-                    <main className="relative pt-16 min-h-screen">{children}</main>
+                    <main className="relative pt-16 pb-20 md:pb-0 min-h-screen">{children}</main>
                     <ScrollToTop />
                     <Footer />
                 </ThemeProvider>

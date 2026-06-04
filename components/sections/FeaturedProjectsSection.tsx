@@ -8,7 +8,7 @@ import { featuredProjects } from "@/lib/data/projects";
 
 export function FeaturedProjectsSection() {
     return (
-        <section id="projects" className="py-16">
+        <section id="projects" className="py-10 md:py-16">
             <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
@@ -35,7 +35,7 @@ export function FeaturedProjectsSection() {
                 </motion.div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {featuredProjects.map((project, i) => (
                         <motion.div
                             key={project.id ?? i}
@@ -51,7 +51,7 @@ export function FeaturedProjectsSection() {
                                     src={project.image}
                                     alt={project.title}
                                     fill
-                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                                    className="object-cover transition-all duration-500 group-hover:scale-105"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     unoptimized
                                 />

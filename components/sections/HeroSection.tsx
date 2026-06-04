@@ -40,19 +40,22 @@ export function HeroSection() {
     return (
         <section
             id="hero"
-            className="relative min-h-[calc(100vh-60px)] flex items-center overflow-hidden py-16"
+            className="relative min-h-[calc(100vh-60px)] flex items-center overflow-hidden py-10 md:py-16"
         >
-            <div className="w-full max-w-[1200px] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
+            <div className="w-full max-w-[1200px] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center">
                 {/* Left 60% */}
                 <div className="lg:col-span-3 flex flex-col gap-6">
                     {/* Available badge */}
                     <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-pill border border-border-default bg-bg-secondary w-fit"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-pill bg-bg-secondary border border-border-default mb-8 w-fit"
                     >
-                        <span className="w-1.5 h-1.5 rounded-full bg-text-primary" />
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-text-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-text-primary"></span>
+                        </span>
                         <span className="text-[12px] font-medium text-text-secondary">
                             Open to opportunities
                         </span>
@@ -64,7 +67,7 @@ export function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                        <h1 className="text-[36px] sm:text-[48px] font-semibold leading-[1.1] text-text-primary tracking-[-0.03em]">
+                        <h1 className="text-[32px] md:text-[48px] font-semibold leading-[1.1] text-text-primary tracking-[-0.03em]">
                             Hi, I&apos;m Renatha
                         </h1>
                         <div className="mt-2 h-10 flex items-center">
@@ -73,7 +76,7 @@ export function HeroSection() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -10 }}
                                 transition={{ duration: 0.3 }}
-                                className="text-[22px] sm:text-[32px] font-semibold text-text-secondary tracking-[-0.02em]"
+                                className="text-[20px] md:text-[32px] font-semibold text-text-secondary tracking-[-0.02em]"
                             >
                                 {rotating[index]}
                             </motion.span>

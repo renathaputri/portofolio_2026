@@ -16,7 +16,7 @@ export function AboutContent() {
                     transition={{ duration: 0.5 }}
                     className="mb-8"
                 >
-                    <p className="text-[10px] font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-1.5">
+                    <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-1.5">
                         Who I Am
                     </p>
                     <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
@@ -62,9 +62,9 @@ export function AboutContent() {
                             >
                                 {/* Left: dot + line only */}
                                 <div className="flex flex-col items-center w-4 shrink-0">
-                                    <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-brand-500 ring-4 ring-brand-500/20 shrink-0" />
+                                    <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-gray-900 dark:bg-white shrink-0" />
                                     {i < personalData.education.length - 1 && (
-                                        <div className="flex-1 w-px bg-gray-200 dark:bg-gray-800 mt-1.5" />
+                                        <div className="flex-1 w-px bg-gray-300 dark:bg-gray-700 mt-1.5" />
                                     )}
                                 </div>
 
@@ -76,7 +76,7 @@ export function AboutContent() {
                                     <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
                                         {edu.institution}
                                     </p>
-                                    <span className="text-[10px] sm:text-[11px] text-brand-600 dark:text-brand-400 font-medium mt-0.5 block">
+                                    <span className="text-[10px] sm:text-[11px] text-gray-400 dark:text-gray-500 font-medium mt-0.5 block">
                                         {edu.year}
                                     </span>
                                 </div>
@@ -117,32 +117,34 @@ export function AboutContent() {
                                         {cert.issuer}
                                     </p>
                                 </div>
+
                                 <a
                                     href={cert.credentialUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-600 dark:text-brand-400 hover:underline shrink-0"
+                                    className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-900 dark:text-white hover:underline shrink-0"
                                 >
                                     <FiExternalLink size={11} />
                                     View
                                 </a>
                             </motion.div>
                         ))}
-                    </div>
-
-                    <div className="flex justify-center sm:justify-start">
-                        <a
-                            href={personalData.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 text-[11px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-sm hover:shadow-xl hover:shadow-blue-500/10"
-                        >
-                            <FiLinkedin size={14} />
-                            See All on LinkedIn
-                        </a>
-                    </div>
-                </motion.section>
             </div>
-        </div>
+
+            <div className="flex justify-center sm:justify-start">
+
+                <a
+                    href={personalData.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-[11px] sm:text-xs font-bold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all shadow-sm hover:shadow-md"
+                >
+                    <FiLinkedin size={14} />
+                    See All on LinkedIn
+                </a>
+            </div>
+                </motion.section >
+            </div >
+        </div >
     );
 }

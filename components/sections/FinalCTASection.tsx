@@ -1,62 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiMail, FiArrowRight } from "react-icons/fi";
+import { MdOutlineEmail } from "react-icons/md";
 import { personalData } from "@/lib/data/personal";
 
 export function FinalCTASection() {
     return (
-        <section id="cta" className="py-16">
-            <div className="max-w-[800px] mx-auto px-6 lg:px-8">
+        <section id="cta" className="py-16 md:py-24">
+            <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
                 <motion.div
-                    initial={{ opacity: 0, y: 32 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="rounded-large p-8 sm:p-12 text-center bg-bg-inverse text-text-inverse overflow-hidden"
+                    transition={{ duration: 0.5 }}
+                    className="flex flex-col items-center text-center gap-4"
                 >
-                    <div className="relative flex flex-col items-center gap-6">
-                        <motion.p
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-[12px] font-medium tracking-[0.08em] uppercase opacity-70"
-                        >
-                            Let&apos;s Work Together
-                        </motion.p>
+                    <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-text-tertiary">
+                        Available for work
+                    </p>
+                    <h2 className="text-[24px] md:text-[36px] font-semibold tracking-tight leading-[1.2] text-text-primary">
+                        Got something in mind?
+                    </h2>
 
-                        <h2 className="text-[22px] md:text-[32px] font-semibold tracking-[-0.02em] leading-[1.2]">
-                            Ready to build something great?
-                        </h2>
-
-                        <p className="text-[16px] max-w-xl leading-[1.6] opacity-80">
-                            I&apos;m open to full-time roles, internships, and freelance projects.
-                            If you&apos;re looking for a developer who ships clean, thoughtful work —
-                            let&apos;s connect.
-                        </p>
-
-                        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-                            <a
-                                href={personalData.whatsapp}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-6 py-3 h-[44px] rounded-pill bg-bg-primary text-text-primary text-[14px] font-medium hover:opacity-90 active:opacity-80 transition-opacity focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
-                            >
-                                Hire Me
-                                <FiArrowRight size={16} />
-                            </a>
-                            <a
-                                href={`mailto:${personalData.email}`}
-                                className="flex items-center gap-2 px-6 py-3 h-[44px] rounded-pill bg-transparent text-text-inverse border border-border-inverse text-[14px] font-medium hover:bg-overlay-subtle active:bg-overlay-medium transition-all focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
-                            >
-                                <FiMail size={16} />
-                                Send Email
-                            </a>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
+                    <a
+                        href={`mailto:${personalData.email}`}
+                        className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 border border-border-default rounded-pill text-[13px] font-medium text-text-primary hover:border-border-strong transition-colors"
+                    >
+                    <MdOutlineEmail className="text-[16px]" />
+                    {personalData.email}
+                </a>
+            </motion.div>
+        </div>
+        </section >
     );
 }

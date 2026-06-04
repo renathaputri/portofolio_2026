@@ -50,9 +50,9 @@ export function TechStackSection() {
                     >
                         {/* Left: dot + line */}
                         <div className="flex flex-col items-center w-4 shrink-0">
-                            <div className="mt-2 w-3 h-3 rounded-full bg-brand-500 ring-4 ring-brand-500/20 shrink-0" />
+                            <div className="mt-2 w-3 h-3 rounded-full bg-gray-900 dark:bg-white shrink-0" />
                             {ci < categories.length - 1 && (
-                                <div className="flex-1 w-px bg-gray-200 dark:bg-gray-800 mt-2" />
+                                <div className="flex-1 w-px bg-gray-300 dark:bg-gray-700 mt-2" />
                             )}
                         </div>
 
@@ -65,7 +65,7 @@ export function TechStackSection() {
                                 {cat.items.map((item) => (
                                     <span
                                         key={item}
-                                        className="px-3 py-1 rounded-full text-xs font-medium border border-brand-500/15 text-brand-700 dark:text-brand-300 bg-brand-500/5 dark:bg-brand-400/5 hover:bg-brand-500/10 dark:hover:bg-brand-400/10 hover:border-brand-500/30 transition-all cursor-default"
+                                        className="px-3 py-1 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white bg-transparent cursor-default"
                                     >
                                         {item}
                                     </span>

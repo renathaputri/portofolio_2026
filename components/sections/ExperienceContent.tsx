@@ -14,7 +14,7 @@ export function ExperienceContent() {
                     transition={{ duration: 0.5 }}
                     className="mb-8"
                 >
-                    <p className="text-[10px] font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-1.5">
+                    <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-1.5">
                         Career Path
                     </p>
                     <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
@@ -38,18 +38,18 @@ export function ExperienceContent() {
                             className="relative flex gap-4 sm:gap-6"
                         >
                             <div className="flex flex-col items-center w-4 shrink-0">
-                                <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-brand-500 ring-4 ring-brand-500/20 shrink-0" />
+                                <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-gray-900 dark:bg-white shrink-0" />
                                 {i < personalData.experience.length - 1 && (
-                                    <div className="flex-1 w-px bg-gray-200 dark:bg-gray-800 mt-2" />
+                                    <div className="flex-1 w-px bg-gray-300 dark:bg-gray-700 mt-2" />
                                 )}
                             </div>
 
                             <div className={`flex-1 ${i === personalData.experience.length - 1 ? "pb-0" : "pb-6 sm:pb-8"}`}>
                                 <div className="flex items-center gap-2 mb-1">
-                                    <p className="text-[10px] font-semibold text-brand-600 dark:text-brand-400">
+                                    <p className="text-[10px] font-semibold text-gray-900 dark:text-white">
                                         {exp.company}
                                     </p>
-                                    <span className="text-[10px] text-gray-400 font-medium">
+                                    <span className="text-[10px] text-gray-400 dark:text-gray-500 font-medium">
                                         · {exp.yearRange}
                                     </span>
                                 </div>
@@ -62,7 +62,7 @@ export function ExperienceContent() {
                                             key={j}
                                             className="flex items-start gap-2 text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-[95%]"
                                         >
-                                            <span className="mt-1.5 w-1 h-1 rounded-full bg-brand-500/50 shrink-0" />
+                                            <span className="mt-1.5 w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-600 shrink-0" />
                                             {item}
                                         </li>
                                     ))}

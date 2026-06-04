@@ -1,41 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FiBookOpen, FiCheckSquare, FiZap, FiGitPullRequest } from "react-icons/fi";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { FiCode, FiCheckCircle, FiZap, FiCpu } from "react-icons/fi";
 
-const workflows = [
-    {
-        icon: <FiBookOpen size={20} className="text-text-primary" />,
-        title: "Rapid Research",
-        desc: "Accelerating documentation analysis to focus purely on high value execution and problem solving.",
-    },
-    {
-        icon: <FiGitPullRequest size={20} className="text-text-primary" />,
-        title: "Intelligent Code Review",
-        desc: "Using AI to spot edge cases, optimize algorithms, and ensure robust architecture before deployment.",
-    },
-    {
-        icon: <FiCheckSquare size={20} className="text-text-primary" />,
-        title: "Automated Testing",
-        desc: "Generating comprehensive test scenarios instantly to guarantee software reliability and stability.",
-    },
-    {
-        icon: <FiZap size={20} className="text-text-primary" />,
-        title: "Workflow Automation",
-        desc: "Eliminating repetitive setup tasks so I can dedicate all energy to critical engineering decisions.",
-    },
+const features = [
+    { icon: FiCode, label: "AI Code Review" },
+    { icon: FiCheckCircle, label: "Automated Testing" },
+    { icon: FiZap, label: "Rapid Prototyping" },
+    { icon: FiCpu, label: "Smart Debugging" }
 ];
 
 export function AIIntegrationSection() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const yParallax = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
     return (
-        <section id="ai" className="py-16">
-            <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-                {/* Header */}
+        <section id="ai" className="py-20 md:py-32 relative overflow-hidden" ref={containerRef}>
+            <div className="max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="max-w-2xl mb-12"
+                    className="max-w-2xl mb-16"
                 >
                     <p className="text-[12px] font-medium tracking-[0.08em] uppercase text-text-tertiary mb-2">
                         Modern Engineering
@@ -44,34 +36,31 @@ export function AIIntegrationSection() {
                         AI Empowered Workflow
                     </h2>
                     <p className="mt-4 text-[16px] text-text-secondary leading-[1.6]">
-                        I utilize AI as a strategic asset to multiply productivity and raise code quality. This allows me to deliver polished, scalable products faster without compromising core engineering standards.
+                        I integrate AI tools into my workflow — from code review to testing — to ship faster without cutting corners.
                     </p>
                 </motion.div>
 
-                {/* Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {workflows.map((item, i) => (
-                        <motion.div
-                            key={item.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: i * 0.1 }}
-                            whileHover={{ y: -4 }}
-                            className="group p-6 rounded-default bg-bg-primary border border-border-default hover:border-border-strong shadow-l1 hover:shadow-l2 transition-all duration-300 cursor-pointer"
-                        >
-                            <span className="mb-4 inline-flex origin-left transition-transform duration-300 group-hover:scale-110">
-                                {item.icon}
-                            </span>
-                            <h3 className="text-[16px] font-medium text-text-primary mb-2">
-                                {item.title}
-                            </h3>
-                            <p className="text-[14px] text-text-secondary leading-[1.6]">
-                                {item.desc}
-                            </p>
-                        </motion.div>
-                    ))}
-                </div>
+                <motion.div 
+                    style={{ y: yParallax }}
+                    className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+                >
+                    {features.map((feature, idx) => {
+                        const Icon = feature.icon;
+                        return (
+                            <motion.div 
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="flex flex-col items-center justify-center p-8 bg-bg-secondary border border-border-default rounded-2xl shadow-sm hover:shadow-md transition-shadow"
+                            >
+                                <Icon className="text-3xl text-text-primary mb-4" />
+                                <span className="text-[14px] font-medium text-text-secondary text-center">{feature.label}</span>
+                            </motion.div>
+                        );
+                    })}
+                </motion.div>
             </div>
         </section>
     );
