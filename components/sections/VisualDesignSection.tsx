@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiExternalLink, FiArrowRight } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 import { personalData } from "@/lib/data/personal";
 
 export function VisualDesignSection() {

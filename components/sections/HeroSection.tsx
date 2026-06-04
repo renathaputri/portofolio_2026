@@ -165,7 +165,7 @@ export function HeroSection() {
                                     <span className="text-text-primary font-medium">= {"{"}</span>
                                 </p>
                                 <p className="pl-4">
-                                    role: <span className="text-text-primary font-medium">&apos;Frontend Dev&apos;</span>,
+                                    role: <span className="text-text-primary font-medium">&apos;Web Developer&apos;</span>,
                                 </p>
                                 <p className="pl-4">
                                     focus: <span className="text-text-primary font-medium">&apos;React + Next.js&apos;</span>,

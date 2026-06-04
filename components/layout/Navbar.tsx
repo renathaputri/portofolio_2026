@@ -19,14 +19,16 @@ const navLinks = [
 export function Navbar() {
     const { setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("");
     const pathname = usePathname();
 
     useEffect(() => setMounted(true), []);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
+        const handleScroll = () => {
+            // Reserved for future scroll-based UI changes
+            void window.scrollY;
+        };
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
