@@ -10,8 +10,8 @@ const previewStack = [
 
 export function MiniAboutStackSection() {
     return (
-        <section id="about-stack" className="py-10 md:py-16">
-            <div className="max-w-[1200px] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+        <section id="about-stack" className="py-8 md:py-16">
+            <div className="max-w-[1200px] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 lg:gap-16 items-center">
                 {/* Left Side */}
                 <motion.div
                     initial={{ opacity: 0, x: -24 }}

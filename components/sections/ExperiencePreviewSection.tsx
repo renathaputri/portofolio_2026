@@ -25,7 +25,7 @@ export function ExperiencePreviewSection() {
     const preview = personalData.experience.slice(0, 3);
 
     return (
-        <section id="experience" className="py-10 md:py-16">
+        <section id="experience" className="py-8 md:py-16">
             <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
 
                 {/* Header */}
@@ -76,15 +76,17 @@ export function ExperiencePreviewSection() {
                                 </p>
                             </div>
 
-                            {/* Right — Position + Field labels, right-aligned */}
-                            <div className="flex flex-col gap-2 shrink-0 items-end text-right">
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[11px] text-text-tertiary">Position</span>
-                                    <span className="text-[13px] font-semibold text-text-primary">{exp.position}</span>
+                            {/* Right — Position + Field Badges */}
+                            <div className="flex flex-col gap-2 shrink-0 items-start sm:items-end mt-4 sm:mt-0">
+                                <div className="flex items-center gap-2">
+                                    <span className="text-[11px] text-text-tertiary w-12 sm:w-auto text-left sm:text-right">Role</span>
+                                    <span className="px-2.5 py-1 text-[12px] font-medium text-text-primary bg-overlay-subtle border border-border-default rounded-md">
+                                        {exp.position}
+                                    </span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[11px] text-text-tertiary">Field</span>
-                                    <span className="text-[13px] font-semibold text-text-primary">
+                                <div className="flex items-center gap-2">
+                                    <span className="text-[11px] text-text-tertiary w-12 sm:w-auto text-left sm:text-right">Field</span>
+                                    <span className="px-2.5 py-1 text-[12px] font-medium text-text-primary bg-overlay-subtle border border-border-default rounded-md">
                                         {roleType[exp.position] ?? "General"}
                                     </span>
                                 </div>

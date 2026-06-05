@@ -6,7 +6,7 @@ import { personalData } from "@/lib/data/personal";
 
 export function FinalCTASection() {
     return (
-        <section id="cta" className="py-16 md:py-24">
+        <section id="cta" className="py-12 md:py-24">
             <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

@@ -75,7 +75,7 @@ export function StatementSection() {
             className="relative w-full bg-bg-primary text-text-primary"
             style={{ minHeight: "400vh" }}
         >
-            <div className="sticky top-0 h-screen flex items-center justify-center px-6 lg:px-16">
+            <div className="sticky top-0 h-[calc(100svh-100px)] md:h-screen flex items-center justify-center px-6 lg:px-16">
                 <p className="max-w-[820px] text-[22px] md:text-[32px] lg:text-[38px] font-bold tracking-tight leading-[1.8] text-center">
                     {allWords.map((item, i) => {
                         if (!item.word.trim()) {

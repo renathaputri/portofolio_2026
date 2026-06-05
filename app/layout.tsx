@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Preloader } from "@/components/layout/Preloader";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { personalData } from "@/lib/data/personal";
 
 const geistSans = Geist({
@@ -117,10 +118,11 @@ export default function RootLayout({
             </head>
             <body className="font-sans antialiased bg-bg-primary text-text-primary">
                 <ThemeProvider>
+                    <ScrollProgress />
                     <Preloader />
                     <Navbar />
 
-                    <main className="relative pt-16 pb-20 md:pb-0 min-h-screen">{children}</main>
+                    <main className="relative pt-16 pb-[96px] md:pb-0 min-h-screen">{children}</main>
                     <ScrollToTop />
                     <Footer />
                 </ThemeProvider>

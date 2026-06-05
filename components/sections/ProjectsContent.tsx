@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiGithub, FiExternalLink } from "react-icons/fi";
+import { FiGithub, FiExternalLink, FiArrowUpRight } from "react-icons/fi";
 import { projects } from "@/lib/data/projects";
 import { personalData } from "@/lib/data/personal";
 
@@ -103,31 +104,21 @@ export function ProjectsContent() {
 
                                     <div className={`flex items-center gap-2.5 pt-1 ${!isEven ? "lg:justify-end" : ""}`}>
                                         {project.available ? (
-                                            <a
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-[11px] font-semibold bg-bg-inverse text-text-inverse hover:opacity-85 transition-all"
+                                            <Link
+                                                href={`/projects/${project.id}`}
+                                                className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-[12px] font-semibold bg-bg-inverse text-text-inverse hover:opacity-85 transition-all"
                                             >
-                                                <FiGithub size={12} />
-                                                Available on GitHub
-                                            </a>
+                                                View Detail
+                                                <FiArrowUpRight size={14} />
+                                            </Link>
                                         ) : (
-                                            <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-[11px] font-semibold bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed select-none">
-                                                <FiGithub size={12} />
-                                                Private Repo
-                                            </span>
-                                        )}
-                                        {project.liveUrl && (
-                                            <a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-border-strong text-text-primary hover:bg-bg-secondary transition-all"
+                                            <button
+                                                disabled
+                                                className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-[12px] font-semibold bg-bg-secondary text-text-disabled cursor-not-allowed select-none border border-border-default"
                                             >
-                                                <FiExternalLink size={12} />
-                                                Live Demo
-                                            </a>
+                                                View Detail
+                                                <FiArrowUpRight size={14} />
+                                            </button>
                                         )}
                                     </div>
                                 </div>

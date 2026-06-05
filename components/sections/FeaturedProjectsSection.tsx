@@ -7,7 +7,7 @@ import { featuredProjects } from "@/lib/data/projects";
 
 export function FeaturedProjectsSection() {
     return (
-        <section id="projects" className="py-10 md:py-16">
+        <section id="projects" className="py-8 md:py-16">
             <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
@@ -57,16 +57,22 @@ export function FeaturedProjectsSection() {
                             </div>
 
                             <div className="flex items-center">
-                                {project.available && (
-                                    <a
-                                        href={project.liveUrl || project.githubUrl || "#"}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-1.5 px-5 py-2.5 rounded-pill bg-bg-inverse text-text-inverse text-[13px] font-medium hover:opacity-85 transition-opacity focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
+                                {project.available ? (
+                                    <Link
+                                        href={`/projects/${project.id}`}
+                                        className="flex items-center gap-1.5 px-5 py-2.5 rounded-pill bg-bg-inverse text-text-inverse text-[13px] font-medium hover:opacity-85 transition-opacity focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse"
                                     >
-                                        Visit Site
+                                        View Detail
                                         <FiArrowUpRight size={14} />
-                                    </a>
+                                    </Link>
+                                ) : (
+                                    <button
+                                        disabled
+                                        className="flex items-center gap-1.5 px-5 py-2.5 rounded-pill bg-bg-secondary text-text-disabled text-[13px] font-medium cursor-not-allowed border border-border-default"
+                                    >
+                                        View Detail
+                                        <FiArrowUpRight size={14} />
+                                    </button>
                                 )}
                             </div>
                         </motion.div>

@@ -34,7 +34,7 @@ export function ScrollToTop() {
         <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="fixed bottom-8 right-8 z-50 flex h-11 w-11 items-center justify-center rounded-pill bg-bg-inverse text-text-inverse opacity-90 transition-opacity hover:opacity-100 focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
+            className="fixed bottom-[96px] right-6 md:bottom-8 md:right-8 z-50 flex h-11 w-11 items-center justify-center rounded-pill bg-bg-inverse text-text-inverse opacity-90 transition-opacity hover:opacity-100 focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
         >
             <FiArrowUp size={20} />
         </button>

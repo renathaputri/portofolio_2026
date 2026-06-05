@@ -86,7 +86,7 @@ export function Navbar() {
                     <nav className="mx-auto w-full max-w-[1200px] px-6 lg:px-8 flex items-center justify-between h-[80px]">
                         {/* LEFT: Brand + nav links */}
                         <div className="flex items-center gap-8">
-                            <Link href="/" className="font-semibold text-[16px] text-text-primary tracking-tight focus:outline-none focus:ring-[3px] focus:ring-border-inverse rounded-sm" aria-label="Home">
+                            <Link href="/" className="font-semibold text-[16px] text-text-primary tracking-tight focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse rounded-sm" aria-label="Home">
                                 {personalData.fullName}
                             </Link>
 
@@ -98,7 +98,7 @@ export function Navbar() {
                                         <li key={link.label}>
                                             <Link
                                                 href={link.href}
-                                                className={`relative px-3 py-2 rounded-small text-[14px] font-normal transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse group ${isActive
+                                                className={`relative px-3 py-2 rounded-small text-[14px] font-normal transition-colors focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse group ${isActive
                                                     ? "text-text-primary font-medium"
                                                     : "text-text-secondary hover:text-text-primary"
                                                     }`}
@@ -119,7 +119,7 @@ export function Navbar() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="GitHub Profile"
-                                className="hidden md:flex items-center gap-2 px-3 py-2 rounded-small text-[14px] font-normal text-text-secondary hover:text-text-primary hover:bg-overlay-subtle transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
+                                className="hidden md:flex items-center gap-2 px-3 py-2 rounded-small text-[14px] font-normal text-text-secondary hover:text-text-primary hover:bg-overlay-subtle transition-colors focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse"
                             >
                                 <FiGithub size={16} />
                                 <span>GitHub</span>
@@ -129,7 +129,7 @@ export function Navbar() {
                                 href={personalData.whatsapp}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hidden md:flex px-6 py-3 rounded-pill text-[14px] font-medium bg-bg-inverse text-text-inverse hover:opacity-85 active:opacity-75 transition-opacity focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
+                                className="hidden md:flex px-6 py-3 rounded-pill text-[14px] font-medium bg-bg-inverse text-text-inverse hover:opacity-85 active:opacity-75 transition-opacity focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse"
                             >
                                 Contact Me
                             </a>
@@ -137,7 +137,7 @@ export function Navbar() {
                             <button
                                 onClick={toggleTheme}
                                 aria-label="Toggle dark mode"
-                                className="w-10 h-10 flex items-center justify-center rounded-default text-text-secondary hover:bg-overlay-subtle transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse"
+                                className="w-10 h-10 flex items-center justify-center rounded-default text-text-secondary hover:bg-overlay-subtle transition-colors focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse"
                             >
                                 {mounted && (isDark ? <FiSun size={18} /> : <FiMoon size={18} />)}
                             </button>
@@ -156,7 +156,7 @@ export function Navbar() {
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                className={`flex flex-col items-center justify-center w-14 h-12 rounded-lg transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse ${isActive
+                                className={`flex flex-col items-center justify-center w-14 h-12 rounded-lg transition-colors focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse ${isActive
                                     ? "text-text-primary bg-overlay-subtle"
                                     : "text-text-secondary hover:text-text-primary hover:bg-overlay-subtle"
                                     }`}
