@@ -40,7 +40,7 @@ export function HeroSection() {
     return (
         <section
             id="hero"
-            className="relative min-h-[calc(100svh-120px)] md:min-h-[calc(100svh-60px)] flex items-center overflow-hidden py-6 md:py-16"
+            className="relative min-h-[calc(100svh-176px)] md:min-h-[calc(100svh-80px)] flex items-center overflow-hidden py-6 md:py-16"
         >
             <div className="w-full max-w-[1200px] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-10 lg:gap-16 items-center">
                 {/* Left 60% */}

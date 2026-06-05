@@ -81,7 +81,7 @@ export function Navbar() {
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="transition-all duration-300 bg-bg-primary/80 backdrop-blur-md border-b border-border-default"
+                    className="transition-all duration-300 bg-bg-primary border-b border-border-default"
                 >
                     <nav className="mx-auto w-full max-w-[1200px] px-6 lg:px-8 flex items-center justify-between h-[80px]">
                         {/* LEFT: Brand + nav links */}

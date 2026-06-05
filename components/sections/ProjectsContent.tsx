@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiGithub, FiExternalLink, FiArrowUpRight } from "react-icons/fi";
+import { FiGithub, FiArrowUpRight } from "react-icons/fi";
 import { projects } from "@/lib/data/projects";
 import { personalData } from "@/lib/data/personal";
 
 export function ProjectsContent() {
     return (
-        <div className="min-h-screen py-10 md:py-16 px-6 lg:px-8">
+        <div className="min-h-[calc(100svh-176px)] md:min-h-[calc(100svh-80px)] py-10 md:py-16 px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
                 {/* Page header */}
                 <motion.div

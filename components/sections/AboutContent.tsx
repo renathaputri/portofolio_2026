@@ -7,7 +7,7 @@ import { TechStackSection } from "@/components/sections/TechStackSection";
 
 export function AboutContent() {
     return (
-        <div className="min-h-screen py-10 md:py-16 px-6 lg:px-8">
+        <div className="min-h-[calc(100svh-176px)] md:min-h-[calc(100svh-80px)] py-10 md:py-16 px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
                 {/* Page header */}
                 <motion.div

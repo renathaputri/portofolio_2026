@@ -122,7 +122,7 @@ export default function RootLayout({
                     <Preloader />
                     <Navbar />
 
-                    <main className="relative pt-16 pb-[96px] md:pb-0 min-h-screen">{children}</main>
+                    <main className="relative pt-[80px] pb-[96px] md:pb-0 min-h-screen">{children}</main>
                     <ScrollToTop />
                     <Footer />
                 </ThemeProvider>
