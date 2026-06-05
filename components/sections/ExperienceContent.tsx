@@ -5,7 +5,7 @@ import { personalData } from "@/lib/data/personal";
 
 export function ExperienceContent() {
     return (
-        <div className="min-h-screen py-10 md:py-16 section-padding">
+        <div className="min-h-screen py-10 md:py-16 px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
                 {/* Page header */}
                 <motion.div

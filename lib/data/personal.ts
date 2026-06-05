@@ -8,6 +8,7 @@ export const personalData = {
     email: "renathaputri72@gmail.com",
     github: "https://github.com/renathaputri",
     linkedin: "https://linkedin.com/in/renathaputri",
+    instagram: "https://instagram.com/renathasalfa",
     whatsapp: "https://wa.me/62887208089",
     cvUrl: "https://drive.google.com/file/d/1R2QVQVVKPpX26qvCME88ce0CmQFJ-lSG/view?usp=sharing",
     graphicPortfolioUrl:

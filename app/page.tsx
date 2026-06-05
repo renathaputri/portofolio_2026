@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { StatementSection } from "@/components/sections/StatementSection";
+import { MiniAboutStackSection } from "@/components/sections/MiniAboutStackSection";
 import { FeaturedProjectsSection } from "@/components/sections/FeaturedProjectsSection";
+import { ExperiencePreviewSection } from "@/components/sections/ExperiencePreviewSection";
 import { VisualDesignSection } from "@/components/sections/VisualDesignSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
@@ -17,7 +19,9 @@ export default function HomePage() {
         <>
             <HeroSection />
             <StatementSection />
+            <MiniAboutStackSection />
             <FeaturedProjectsSection />
+            <ExperiencePreviewSection />
             <VisualDesignSection />
             <BlogSection />
             <FinalCTASection />

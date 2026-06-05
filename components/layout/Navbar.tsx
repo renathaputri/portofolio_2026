@@ -6,14 +6,14 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { FiGithub, FiSun, FiMoon } from "react-icons/fi";
-import { LuHouse, LuUser, LuFolder, LuBriefcase } from "react-icons/lu";
+import { LuHouse, LuFolder, LuBriefcase, LuFileText } from "react-icons/lu";
 import { personalData } from "@/lib/data/personal";
 
 const navLinks = [
     { label: "Home", href: "/", icon: LuHouse },
-    { label: "About", href: "/about", icon: LuUser },
     { label: "Projects", href: "/projects", icon: LuFolder },
     { label: "Experience", href: "/experience", icon: LuBriefcase },
+    { label: "Article", href: "/#blog", icon: LuFileText },
 ];
 
 export function Navbar() {
@@ -61,11 +61,14 @@ export function Navbar() {
     const isDark = resolvedTheme === "dark";
 
     const getIsActive = (href: string) => {
+        if (href === "/#blog") {
+            if (pathname !== "/") return false;
+            return activeSection === "blog";
+        }
         if (pathname !== "/") {
             return pathname === href;
         }
         if (href === "/") return activeSection === "hero" || activeSection === "";
-        if (href === "/about") return activeSection === "statement";
         if (href === "/projects") return activeSection === "projects";
         return false;
     };
@@ -144,8 +147,8 @@ export function Navbar() {
             </div>
 
             {/* Mobile Bottom Nav */}
-            <div className="md:hidden fixed bottom-4 left-4 right-4 z-[100]">
-                <nav className="flex items-center justify-around bg-bg-primary/80 backdrop-blur-md border border-border-default rounded-full p-2 shadow-l3">
+            <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100]">
+                <nav className="flex items-center justify-around bg-bg-primary/80 backdrop-blur-md border-t border-border-default px-2 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
                     {navLinks.map((link) => {
                         const isActive = getIsActive(link.href);
                         const Icon = link.icon;
@@ -153,7 +156,7 @@ export function Navbar() {
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                className={`flex flex-col items-center justify-center w-14 h-12 rounded-full transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse ${isActive
+                                className={`flex flex-col items-center justify-center w-14 h-12 rounded-lg transition-colors focus:outline-none focus:ring-[3px] focus:ring-border-inverse ${isActive
                                     ? "text-text-primary bg-overlay-subtle"
                                     : "text-text-secondary hover:text-text-primary hover:bg-overlay-subtle"
                                     }`}
