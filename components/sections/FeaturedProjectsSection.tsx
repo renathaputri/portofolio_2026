@@ -14,11 +14,11 @@ export function FeaturedProjectsSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8"
+                    className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 md:mb-12"
                 >
                     <div>
                         <p className="text-[12px] font-medium tracking-[0.08em] uppercase text-text-tertiary mb-2">
-                            Selected projects
+                            Selected Projects
                         </p>
                         <h2 className="text-[22px] md:text-[32px] font-semibold text-text-primary tracking-[-0.02em] leading-[1.2]">
                             Featured Projects
@@ -26,52 +26,56 @@ export function FeaturedProjectsSection() {
                     </div>
                     <Link
                         href="/projects"
-                        className="flex items-center gap-1.5 text-[14px] font-medium text-text-primary underline underline-offset-4 decoration-border-strong hover:decoration-text-primary focus:outline-none focus:ring-[3px] focus:ring-border-inverse rounded-sm transition-all group"
+                        className="flex items-center gap-1.5 text-[14px] font-medium text-text-primary underline underline-offset-4 decoration-border-strong hover:decoration-text-primary transition-all group pb-1"
                     >
                         View all projects
                         <FiArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </Link>
                 </motion.div>
 
-                {/* List */}
+                {/* Project list — List layout */}
                 <div className="flex flex-col">
                     {featuredProjects.map((project, i) => (
                         <motion.div
-                            key={project.id ?? i}
+                            key={project.id}
                             initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: i * 0.1 }}
-                            className={`group flex flex-col sm:flex-row sm:items-center justify-between p-6 bg-bg-primary border-border-default hover:bg-bg-secondary transition-all duration-300 ${i === 0 ? "border-y" : "border-b"}`}
+                            className={`group flex flex-col md:flex-row md:items-center justify-between gap-6 py-8 border-border-default transition-colors ${i === 0 ? "border-y" : "border-b"}`}
                         >
-                            <div className="flex flex-col gap-1.5 mb-4 sm:mb-0 max-w-3xl">
-                                <p className="text-[11px] font-medium tracking-[0.08em] uppercase text-text-tertiary">
-                                    {project.stack?.join(" • ") ?? "Project"}
-                                </p>
-                                <h3 className="text-[18px] font-semibold text-text-primary">
+                            {/* Left Text */}
+                            <div className="flex flex-col gap-2.5 max-w-3xl">
+                                <span className="text-[10px] md:text-[11px] font-medium tracking-widest uppercase text-text-tertiary">
+                                    {project.stack.join(" • ")}
+                                </span>
+
+                                <h3 className="text-lg md:text-[22px] font-semibold text-text-primary leading-tight">
                                     {project.title}
                                 </h3>
-                                <p className="text-[14px] text-text-secondary">
+
+                                <p className="text-[13px] md:text-[14px] text-text-secondary leading-relaxed">
                                     {project.description}
                                 </p>
                             </div>
 
-                            <div className="flex items-center">
+                            {/* Right Action */}
+                            <div className="flex items-center md:justify-end shrink-0 mt-2 md:mt-0">
                                 {project.available ? (
                                     <Link
                                         href={`/projects/${project.id}`}
-                                        className="flex items-center gap-1.5 px-5 py-2.5 rounded-pill bg-bg-inverse text-text-inverse text-[13px] font-medium hover:opacity-85 transition-opacity focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse"
+                                        className="flex items-center gap-1.5 px-6 py-2.5 rounded-full text-[13px] font-medium bg-bg-inverse text-text-inverse hover:opacity-85 transition-all"
                                     >
                                         View Detail
-                                        <FiArrowUpRight size={14} />
+                                        <FiArrowUpRight size={16} />
                                     </Link>
                                 ) : (
                                     <button
                                         disabled
-                                        className="flex items-center gap-1.5 px-5 py-2.5 rounded-pill bg-bg-secondary text-text-disabled text-[13px] font-medium cursor-not-allowed border border-border-default"
+                                        className="flex items-center gap-1.5 px-6 py-2.5 rounded-full text-[13px] font-medium bg-bg-secondary text-text-disabled cursor-not-allowed select-none border border-border-default"
                                     >
                                         View Detail
-                                        <FiArrowUpRight size={14} />
+                                        <FiArrowUpRight size={16} />
                                     </button>
                                 )}
                             </div>

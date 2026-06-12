@@ -68,84 +68,84 @@ export const projects: Project[] = [
         }
     },
     {
-        id: "school-inventory-loan-system",
-        title: "SMK Surabaya Inventory System",
+        id: "bikinkarya",
+        title: "BikinKarya - AI Work Experience Simulator",
         description:
-            "A web application that manages asset borrowing, returns, and usage reports through a centralized dashboard. It improves tracking accuracy and accountability.",
-        stack: ["Laravel", "PHP", "MySQL", "Blade"],
+            "An AI-powered platform that helps fresh graduates and final-year students build real work experience through simulated project briefs, kanban task management, and a recruiter-ready portfolio.",
+        stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "Supabase", "NextAuth.js", "Gemini API", "Docker"],
         githubUrl: "https://github.com/renathaputri",
-        liveUrl: "https://smk-inventory-system.vercel.app",
-        image: "/images/projects/school-inventory.webp",
+        liveUrl: "https://bikinkarya.vercel.app",
+        image: "/images/projects/bikinkarya.webp",
         featured: true,
         available: true,
         details: {
             problemAndObjective: [
-                "SMK Surabaya managed hundreds of school assets including projectors, laptops, and lab equipment using manual logbooks. This led to frequent miscommunication about item availability, untracked losses, and difficulty generating accurate usage reports for administration.",
-                "The objective was to digitize the entire borrowing and return workflow into a centralized web system, giving staff real-time visibility into asset status and enabling administrators to generate reports without manual data consolidation."
+                "Indonesia faces a growing employment paradox: thousands of educated graduates remain unemployed while job vacancies go unfilled due to skill mismatch. Fresh graduates have no real work experience to show, portfolios filled with academic assignments are ignored by HRD, and the gap between university curricula and industry expectations continues to widen.",
+                "BikinKarya was built to close that gap by simulating an actual work experience from start to finish. Users receive AI-generated project briefs that feel like real client work, manage their tasks on a kanban board, and build a public portfolio from their completed outputs, giving them something concrete to show recruiters without waiting for an internship opportunity."
             ],
             challengesAndSolutions: [
                 {
-                    title: "Complex Borrowing State Machine",
-                    description: "Each asset loan had multiple states such as requested, approved, borrowed, returned, and damaged, with different user roles having different transition permissions. I modeled this as an explicit state machine in Laravel, with middleware guards to prevent invalid state transitions."
+                    title: "Generating Briefs That Feel Like Real Client Work",
+                    description: "Generic AI prompts produced briefs that felt academic and unrealistic. I engineered domain-specific prompt templates for UI/UX Design, Graphic Design, and Digital Marketing, each structured with client background, business goals, constraints, and deliverables, calibrated per difficulty level so Junior briefs are execution-focused while Senior briefs introduce strategic ambiguity and stakeholder complexity."
                 },
                 {
-                    title: "Report Generation for Non-Technical Staff",
-                    description: "Admin staff needed to export usage reports without any technical knowledge. I built a report generation module with date range filters that exports clean PDF and Excel files using Laravel's DomPDF and Maatwebsite Excel packages."
+                    title: "Deploying to Google Cloud Run with Docker",
+                    description: "The competition required deployment to Google Cloud Run, which meant containerizing a Next.js app with Supabase Storage and external API dependencies. I configured a multi-stage Dockerfile to keep the image lean, handled environment variable injection at runtime, and resolved cold start latency by tuning the minimum instance count."
                 },
                 {
-                    title: "Role-Based Access Control",
-                    description: "The system needed three distinct roles (student, staff, and admin) each with different views and permissions. I implemented Laravel's Gate and Policy system to cleanly separate access logic from controller business logic."
+                    title: "Portfolio Upload Flow After Task Completion",
+                    description: "The transition from marking a task done to uploading portfolio items needed to feel seamless without interrupting the user's focus. I designed a modal-based upload flow triggered automatically when a card moves to Done, with Supabase Storage handling thumbnail uploads and URL validation ensuring result links are properly formatted before saving."
                 }
             ],
             resultsAndImpact: [
-                "Replaced a fully manual logbook process with a digital system, eliminating data entry errors and duplicate records.",
-                "Asset availability is now tracked in real-time, reducing borrowing conflicts between departments significantly.",
-                "Administration can now generate monthly usage reports in under a minute, compared to hours of manual consolidation before.",
-                "Successfully deployed and actively used by school staff for day-to-day asset management operations."
+                "Delivered a complete MVP with Study Case Generator, Kanban Board, Portfolio Builder, and Interview Simulator within the competition timeline.",
+                "Each completed brief produces a public portfolio item shareable directly to recruiters via a unique URL.",
+                "The difficulty-tiered brief system covers Junior through Senior complexity, making the platform useful across different readiness levels.",
+                "Successfully containerized and deployed to Google Cloud Run as required by the competition, with Supabase handling both database and file storage."
             ],
-            specificRole: "Full Stack Web Developer",
-            roleDescription: "Led the full development cycle starting from requirements gathering with school staff, database design, Laravel backend development, Blade UI implementation, and deployment to the school's internal server.",
-            timeline: "2024"
+            specificRole: "Full Stack Developer & Product Designer",
+            roleDescription: "Owned the entire product from PRD to deployment. Designed the system architecture, built the Next.js frontend and API routes, engineered the Gemini prompt templates, set up Prisma with Supabase PostgreSQL, configured Docker and Google Cloud Run deployment, and designed the UI from scratch.",
+            timeline: "2026"
         }
     },
     {
-        id: "scalesense-umkm",
-        title: "ScaleSense - UMKM Growth Platform",
+        id: "jualoka",
+        title: "Jualoka - UMKM E-Commerce Platform",
         description:
-            "A web platform that manages customer orders and analyzes product performance. AI provides recommendations to improve, maintain, or discontinue products.",
-        stack: ["TypeScript", "Next.js", "Tailwind CSS", "Prisma", "PostgreSQL", "Gemini API"],
+            "A lightweight e-commerce platform for Indonesian UMKM to create online stores and receive orders directly via WhatsApp. Includes AI-powered product analytics and a real-time order notification system.",
+        stack: ["Next.js 16", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Better-Auth", "Vercel Blob", "Gemini API", "Recharts"],
         githubUrl: "https://github.com/renathaputri",
-        liveUrl: "https://scalesense-umkm.vercel.app",
-        image: "/images/projects/scalesense.webp",
+        liveUrl: "https://jualoka.vercel.app",
+        image: "/images/projects/jualoka.webp",
         featured: true,
-        available: false,
+        available: true,
         details: {
             problemAndObjective: [
-                "Small and medium businesses (UMKM) in Indonesia often make product decisions based on gut feeling rather than data. Without affordable analytics tools, they struggle to identify which products are actually profitable, which are stagnating, and which are quietly draining their resources.",
-                "ScaleSense was built to give UMKM owners a simple yet powerful platform to manage orders and get AI-driven product performance insights without needing a data analyst. The AI layer uses Gemini to analyze sales trends and generate actionable recommendations in plain language."
+                "Most Indonesian UMKM sellers rely on informal channels like WhatsApp broadcasts and Instagram DMs to take orders, leading to missed messages, stock confusion, and no visibility into which products actually sell well. Existing e-commerce platforms are too complex and charge fees that eat into already-thin margins.",
+                "Jualoka was built to give small business owners a store presence they can set up in minutes, with orders flowing directly into their WhatsApp without any new app for customers to download. The platform also analyzes sales data automatically so sellers know which products to produce more of and which to cut."
             ],
             challengesAndSolutions: [
                 {
-                    title: "Making AI Recommendations Actionable and Trustworthy",
-                    description: "Early Gemini API outputs were too verbose and generic for business owners to act on. I engineered structured prompts with business context injected dynamically, including product sales history, margins, and trend data, to get concise and specific recommendations that felt relevant to each user's actual situation."
+                    title: "Real-Time Order Notifications Without a Third-Party Service",
+                    description: "Sellers needed to know the moment an order arrived without relying on push notification services. I implemented Server-Sent Events (SSE) on the API layer so the admin dashboard maintains a live connection to the server and receives instant order alerts the moment a customer submits a cart, without polling or external dependencies."
                 },
                 {
-                    title: "Type-Safe API Design at Scale",
-                    description: "With multiple entities (orders, products, customers, recommendations) interacting across the app, maintaining type safety was critical. I used Prisma with TypeScript end-to-end, defining strict schemas that prevented runtime data shape mismatches between the database and the frontend."
+                    title: "WhatsApp Checkout Without an API or Integration",
+                    description: "Integrating a formal WhatsApp Business API would require approval and add cost. Instead, I engineered a checkout flow that composes a fully formatted order message from the cart state and opens it directly in WhatsApp via the wa.me deep link. Customers need no app install, no login, and sellers receive orders in their existing WhatsApp number."
                 },
                 {
-                    title: "Performance with Complex Aggregation Queries",
-                    description: "Product performance analytics required aggregating large order datasets across date ranges. I optimized PostgreSQL queries with proper indexing on frequently filtered columns and implemented server-side pagination to keep dashboard load times fast even as data grew."
+                    title: "AI Product Performance Classification",
+                    description: "Sellers needed actionable insight on their product catalog without understanding data. I built an analytics module that calculates revenue, volume, and profitability per product, then uses Gemini to classify each product as Laris, Kurang Laku, or Rugi with a plain-language recommendation on what to do next, making data accessible to non-technical business owners."
                 }
             ],
             resultsAndImpact: [
-                "Delivered a fully functional platform where business owners can manage orders and receive AI product recommendations from a single dashboard.",
-                "AI recommendation feature reduces product review time for business owners from hours of manual spreadsheet work to seconds.",
-                "The type-safe architecture significantly reduced bugs during development and made onboarding new features straightforward.",
-                "Designed to be scalable for multi-tenant SaaS expansion, with workspace isolation already built into the data model."
+                "Sellers can create a fully functional online store with a unique public URL in under five minutes.",
+                "The WhatsApp checkout flow eliminates friction for buyers while keeping the entire order process within tools sellers already use daily.",
+                "Real-time SSE notifications mean sellers never miss an order even when the dashboard tab is open in the background.",
+                "AI product classification gives UMKM owners data-driven production decisions that previously required a business analyst to produce."
             ],
-            specificRole: "Full Stack Developer & AI Integration Lead",
-            roleDescription: "Owned the complete product including the Next.js frontend, API routes, Prisma database modeling, PostgreSQL schema design, and Gemini API integration with prompt engineering for business-relevant AI outputs.",
+            specificRole: "Full Stack Developer",
+            roleDescription: "Built the complete platform including the public storefront, seller dashboard, product and order management system, SSE notification layer, WhatsApp checkout flow, Vercel Blob image storage integration, and Gemini-powered analytics module.",
             timeline: "2025"
         }
     },
@@ -159,7 +159,7 @@ export const projects: Project[] = [
         liveUrl: "https://labuan-bajo-ticketing.vercel.app",
         image: "/images/projects/labuan-bajo-pos.webp",
         featured: false,
-        available: true,
+        available: false,
         details: {
             problemAndObjective: [
                 "A tourism ticketing operator in the Labuan Bajo area was managing ticket sales through manual cashier sheets, making it difficult to reconcile daily revenue, track remaining ticket stock, and prevent overselling during peak tourist season.",

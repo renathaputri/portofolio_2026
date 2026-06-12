@@ -8,6 +8,7 @@ import { VisualDesignSection } from "@/components/sections/VisualDesignSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 
+
 export const metadata: Metadata = {
     title: "Renatha Putri | Web Developer",
     description:

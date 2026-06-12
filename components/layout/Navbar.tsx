@@ -39,7 +39,7 @@ export function Navbar() {
             setActiveSection("");
             return;
         }
-        const sectionIds = ["hero", "statement", "projects", "design", "blog", "cta"];
+        const sectionIds = ["hero", "statement", "projects", "experience", "design", "blog", "cta"];
         const observers: IntersectionObserver[] = [];
         sectionIds.forEach((id) => {
             const el = document.getElementById(id);
@@ -70,6 +70,7 @@ export function Navbar() {
         }
         if (href === "/") return activeSection === "hero" || activeSection === "";
         if (href === "/projects") return activeSection === "projects";
+        if (href === "/experience") return activeSection === "experience";
         return false;
     };
 
