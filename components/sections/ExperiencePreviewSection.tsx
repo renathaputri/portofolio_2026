@@ -7,13 +7,15 @@ import { personalData } from "@/lib/data/personal";
 
 const roleType: Record<string, string> = {
     "Head Of Web Developer": "Web Development",
-    "Consultant Graphic Designer": "Brand & Design",
-    "Vice Graphic Designer": "Visual Design",
-    "Graphic Designer Intern": "Visual Design",
+    "Google Student Ambassador": "Community & Evangelism",
+    "Consultant Graphic Designer": "Design Support",
+    "Vice Graphic Designer": "Design Support",
+    "Graphic Designer Intern": "Design Support",
     "QA Documenter": "Quality Assurance",
 };
 
 const companyDesc: Record<string, string> = {
+    "Google": "Global technology leader",
     "Ditz Creative Lab": "Creative studio & product house",
     "Growthskill": "Digital growth & marketing platform",
     "Grafologi Indonesia": "Handwriting analysis & education brand",

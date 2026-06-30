@@ -77,6 +77,8 @@ export function HeroSection() {
                                 animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -10 }}
                                 transition={{ duration: 0.3 }}
                                 className="text-[20px] md:text-[32px] font-semibold text-text-secondary tracking-[-0.02em]"
+                                aria-live="polite"
+                                aria-atomic="true"
                             >
                                 {rotating[index]}
                             </motion.span>
@@ -136,8 +138,9 @@ export function HeroSection() {
                                     key={label}
                                     title={label}
                                     className="text-text-secondary hover:text-text-primary transition-colors"
+                                    aria-label={label}
                                 >
-                                    <Icon size={18} />
+                                    <Icon size={18} aria-hidden="true" />
                                 </div>
                             ))}
                         </div>
@@ -158,7 +161,7 @@ export function HeroSection() {
                                     config.ts
                                 </span>
                             </div>
-                            <div className="p-5 font-mono text-[13px] leading-[1.5] space-y-1 text-text-secondary">
+                            <div className="p-5 font-mono text-[13px] leading-[1.5] space-y-1 text-text-secondary" role="img" aria-label="Code snippet representing developer skills">
                                 <p>
                                     <span className="text-text-primary font-medium">const</span>{" "}
                                     Renatha{" "}

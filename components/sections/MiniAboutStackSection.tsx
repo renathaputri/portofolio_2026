@@ -21,15 +21,15 @@ export function MiniAboutStackSection() {
                     className="flex flex-col justify-center gap-6"
                 >
                     <p className="text-[12px] font-medium tracking-[0.08em] uppercase text-text-tertiary">
-                        Design & Dev
+                        Dev & Design
                     </p>
 
                     <div className="flex flex-col gap-0">
                         {[
-                            "Design that thinks.",
-                            "Code that lasts.",
-                            "Every detail matters.",
-                            "Built with intention.",
+                            "Code that works.",
+                            "Design that supports.",
+                            "Fast to ship.",
+                            "Built to last.",
                         ].map((line, i) => (
                             <motion.p
                                 key={line}

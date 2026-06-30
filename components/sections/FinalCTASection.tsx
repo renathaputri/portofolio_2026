@@ -19,7 +19,7 @@ export function FinalCTASection() {
                         Available for work
                     </p>
                     <h2 className="text-[24px] md:text-[36px] font-semibold tracking-tight leading-[1.2] text-text-primary">
-                        Got something in mind?
+                        Need a developer?
                     </h2>
 
                     <a

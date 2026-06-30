@@ -37,6 +37,9 @@ export function Preloader() {
 
     return (
         <div
+            role="status"
+            aria-live="polite"
+            aria-label="Loading page content"
             className="fixed inset-0 z-[200] flex items-center justify-center bg-bg-primary"
             style={{
                 opacity: fading ? 0 : 1,

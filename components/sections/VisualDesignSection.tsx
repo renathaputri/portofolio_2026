@@ -17,15 +17,15 @@ export function VisualDesignSection() {
                     className="flex flex-col justify-center gap-6 self-center"
                 >
                     <p className="text-[12px] font-medium tracking-[0.08em] uppercase text-text-tertiary">
-                        Visual Design Capabilities
+                        Design as a Developer Advantage
                     </p>
 
                     <div className="flex flex-col gap-0">
                         {[
-                            "Design with purpose.",
-                            "Visual hierarchy.",
-                            "Pixel-perfect craft.",
-                            "Shipped with care.",
+                            "I don't just code layouts.",
+                            "I know why they work.",
+                            "Design-trained.",
+                            "Developer-built.",
                         ].map((line, i) => (
                             <motion.p
                                 key={line}
@@ -53,12 +53,12 @@ export function VisualDesignSection() {
                     <div className="grid grid-cols-2 gap-3">
                         {[
                             {
-                                label: "Brand Identity",
-                                desc: "Logo systems & cohesive brand assets",
+                                label: "UI Design Sensibility",
+                                desc: "Building interfaces with trained visual judgment",
                             },
                             {
-                                label: "Creative Direction",
-                                desc: "Visual storytelling across digital platforms",
+                                label: "Visual Communication",
+                                desc: "Translating ideas into clear digital experiences",
                             },
                         ].map((item, i) => (
                             <motion.div
@@ -98,10 +98,10 @@ export function VisualDesignSection() {
                                     Portfolio
                                 </div>
                                 <h4 className="text-[15px] font-semibold text-text-primary">
-                                    View Graphic Design Portfolio
+                                    See My Design Background
                                 </h4>
                                 <p className="text-[12px] text-text-secondary leading-[1.5]">
-                                    Brand identities, UI designs, and creative direction projects.
+                                    Past design work that shapes how I approach frontend development.
                                 </p>
                             </div>
                             <div className="w-8 h-8 rounded-full border border-border-default flex items-center justify-center shrink-0 group-hover:border-border-strong transition-all bg-bg-primary group-hover:bg-bg-tertiary">

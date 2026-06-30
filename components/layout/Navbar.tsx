@@ -84,7 +84,7 @@ export function Navbar() {
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className="transition-all duration-300 bg-bg-primary border-b border-border-default"
                 >
-                    <nav className="mx-auto w-full max-w-[1200px] px-6 lg:px-8 flex items-center justify-between h-[80px]">
+                    <nav aria-label="Main Navigation" className="mx-auto w-full max-w-[1200px] px-6 lg:px-8 flex items-center justify-between h-[80px]">
                         {/* LEFT: Brand + nav links */}
                         <div className="flex items-center gap-8">
                             <Link href="/" className="font-semibold text-[16px] text-text-primary tracking-tight focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse rounded-sm" aria-label="Home">
@@ -99,6 +99,7 @@ export function Navbar() {
                                         <li key={link.label}>
                                             <Link
                                                 href={link.href}
+                                                aria-current={isActive ? "page" : undefined}
                                                 className={`relative px-3 py-2 rounded-small text-[14px] font-normal transition-colors focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse group ${isActive
                                                     ? "text-text-primary font-medium"
                                                     : "text-text-secondary hover:text-text-primary"
@@ -149,7 +150,7 @@ export function Navbar() {
 
             {/* Mobile Bottom Nav */}
             <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100]">
-                <nav className="flex items-center justify-around bg-bg-primary/80 backdrop-blur-md border-t border-border-default px-2 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+                <nav aria-label="Mobile Navigation" className="flex items-center justify-around bg-bg-primary/80 backdrop-blur-md border-t border-border-default px-2 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
                     {navLinks.map((link) => {
                         const isActive = getIsActive(link.href);
                         const Icon = link.icon;
@@ -157,6 +158,7 @@ export function Navbar() {
                             <Link
                                 key={link.label}
                                 href={link.href}
+                                aria-current={isActive ? "page" : undefined}
                                 className={`flex flex-col items-center justify-center w-14 h-12 rounded-lg transition-colors focus:outline-none focus-visible:ring-[3px] focus-visible:ring-border-inverse ${isActive
                                     ? "text-text-primary bg-overlay-subtle"
                                     : "text-text-secondary hover:text-text-primary hover:bg-overlay-subtle"

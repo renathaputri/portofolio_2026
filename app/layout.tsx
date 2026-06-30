@@ -12,11 +12,13 @@ import { personalData } from "@/lib/data/personal";
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
+    display: "swap",
 });
 
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
+    display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -28,20 +30,20 @@ export const metadata: Metadata = {
     description:
         "Web developer with a designer's eye. Specializing in React, Next.js, and modern frontend frameworks. Building clean, intuitive web products for startups and businesses.",
     keywords: [
+        "Web Developer",
         "Frontend Developer",
-        "Fullstack Engineer",
         "React Developer",
         "Next.js Developer",
-        "Web Developer",
-        "UI Developer",
         "TypeScript Developer",
+        "Fullstack Engineer",
+        "UI Developer",
         "Tailwind CSS",
-        "Graphic Designer",
-        "AI-Aware Developer",
         "Renatha Putri",
         "Renatha Putri Salfainy",
         "Portfolio",
         "Web Portfolio",
+        "Graphic Designer",
+        "Design-Literate Developer",
         "Indonesia",
         "Surabaya",
         "Vue.js",

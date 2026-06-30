@@ -1,10 +1,10 @@
 export const personalData = {
     name: "Renatha",
     fullName: "Renatha Putri",
-    title: "Frontend Developer",
+    title: "Web Developer",
     tagline:
-        "I bring designs to life with clean code and a sharp eye for detail.",
-    rotatingTexts: ["UI/UX Designer", "Frontend Developer", "Graphic Designer"],
+        "Web developer who builds clean, functional interfaces, with a designer's eye for detail.",
+    rotatingTexts: ["Web Developer", "Laravel & Next.js", "Design-Literate Coder"],
     email: "renathaputri72@gmail.com",
     github: "https://github.com/renathaputri",
     linkedin: "https://linkedin.com/in/renathaputri",
@@ -15,8 +15,8 @@ export const personalData = {
         "https://drive.google.com/file/d/1hC0qVp5YpjSCaWvZAQHfXnM2Ik12dovA/view?usp=sharing",
     about: {
         intro: [
-            "Frontend developer with a strong foundation in graphic design and UI/UX. I craft interfaces that are visually precise, intuitive, and performance-driven. Every decision, from layout structure to typography and interaction flow, is shaped by both aesthetics and usability.",
-            "I integrate AI into my workflow to enhance speed and output quality, while keeping engineering judgment at the core. The goal is simple: ship digital products that are not only clean and functional, but strategically designed to deliver real user value."
+            "Web developer specializing in React, Next.js, and modern frontend frameworks. I build interfaces that are fast, accessible, and production-ready, from architecture decisions to the final line of code.",
+            "My background in graphic design gives me an edge most developers don't have: I can translate a Figma mockup into pixel-perfect code without back-and-forth. I also integrate AI tools into my workflow to move faster and ship cleaner, while keeping engineering judgment at the core."
         ],
     },
     education: [
@@ -55,6 +55,16 @@ export const personalData = {
     ],
     experience: [
         {
+            yearRange: "2026",
+            company: "Team Google",
+            position: "Google Student Ambassador",
+            responsibilities: [
+                "Selected from over 81,000 students across Indonesia to represent the university.",
+                "Organized various technology education programs and workshops for students.",
+                "Initiated digital literacy campaigns and bridged the campus community with Google technologies.",
+            ],
+        },
+        {
             yearRange: "Since 2025",
             company: "Ditz Creative Lab",
             position: "Head Of Web Developer",
@@ -65,16 +75,6 @@ export const personalData = {
             ],
         },
         {
-            yearRange: "Since 2025",
-            company: "Ditz Creative Lab",
-            position: "Consultant Graphic Designer",
-            responsibilities: [
-                "Built 10+ brand identity systems from scratch, including mascots, logos, brand guidelines, and social layouts.",
-                "Increased client brand consistency across platforms, improving engagement by 30%.",
-                "Led end to end visual direction, reducing revision rounds by 40% through structured design systems.",
-            ],
-        },
-        {
             yearRange: "2025",
             company: "Growthskill",
             position: "Vice Graphic Designer",
@@ -82,6 +82,16 @@ export const personalData = {
                 "Led a team of 8 designers, delivering 100+ visual assets that increased campaign engagement by 28%",
                 "Improved design workflow efficiency by 25% through structured task coordination.",
                 "Contributed to 12+ marketing campaigns with 100% on time visual delivery.",
+            ],
+        },
+        {
+            yearRange: "Since 2025",
+            company: "Ditz Creative Lab",
+            position: "Consultant Graphic Designer",
+            responsibilities: [
+                "Built 10+ brand identity systems from scratch, including mascots, logos, brand guidelines, and social layouts.",
+                "Increased client brand consistency across platforms, improving engagement by 30%.",
+                "Led end to end visual direction, reducing revision rounds by 40% through structured design systems.",
             ],
         },
         {

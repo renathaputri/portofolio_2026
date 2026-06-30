@@ -4,20 +4,20 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
 const sentences: { text: string; accent?: boolean }[][] = [
-    [{ text: "I don't just write code." }],
+    [{ text: "I build web products" }],
     [
-        { text: "I " },
-        { text: "engineer experiences", accent: true },
+        { text: " that people " },
+        { text: "actually enjoy using", accent: true },
         { text: "." },
     ],
     [
-        { text: "By integrating " },
-        { text: "AI into every stage", accent: true },
-        { text: " of my workflow," },
+        { text: "With " },
+        { text: "AI in my workflow", accent: true },
+        { text: "," },
     ],
     [
         {
-            text: "I move faster, think sharper, and ship cleaner than the average developer.",
+            text: "I ship faster and iterate smarter.",
         },
     ],
 ];
@@ -71,6 +71,7 @@ export function StatementSection() {
 
     return (
         <section
+            aria-label="Developer Statement"
             ref={containerRef}
             className="relative w-full bg-bg-primary text-text-primary"
             style={{ minHeight: "400vh" }}

@@ -72,10 +72,12 @@ export function FeaturedProjectsSection() {
                                 ) : (
                                     <button
                                         disabled
+                                        aria-disabled="true"
+                                        aria-label="Project details not available yet"
                                         className="flex items-center gap-1.5 px-6 py-2.5 rounded-full text-[13px] font-medium bg-bg-secondary text-text-disabled cursor-not-allowed select-none border border-border-default"
                                     >
                                         View Detail
-                                        <FiArrowUpRight size={16} />
+                                        <FiArrowUpRight size={16} aria-hidden="true" />
                                     </button>
                                 )}
                             </div>

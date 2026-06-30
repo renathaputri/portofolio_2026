@@ -114,10 +114,12 @@ export function ProjectsContent() {
                                         ) : (
                                             <button
                                                 disabled
+                                                aria-disabled="true"
+                                                aria-label="Project details not available yet"
                                                 className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-[12px] font-semibold bg-bg-secondary text-text-disabled cursor-not-allowed select-none border border-border-default"
                                             >
                                                 View Detail
-                                                <FiArrowUpRight size={14} />
+                                                <FiArrowUpRight size={14} aria-hidden="true" />
                                             </button>
                                         )}
                                     </div>
